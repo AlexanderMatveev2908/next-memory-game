@@ -5,10 +5,12 @@
 /.pnp
 .pnp.*
 .yarn/*
-!.yarn/patches
-!.yarn/plugins
 !.yarn/releases
+!.yarn/releases/*
+!.yarn/plugins
+!.yarn/patches
 !.yarn/versions
+
 
 # testing
 /coverage
@@ -39,3 +41,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vscode
