@@ -1,9 +1,11 @@
 import type { FC } from "react";
+import s from "./page.module.css";
+import OptUserChoice from "@/features/optUserChoice/components/OptUserChoice";
 
 const Home: FC = () => {
   return (
-    <div className="w-full flex justify-center">
-      <span className="txt__3">Home</span>
+    <div className={`${s.page}`}>
+      <OptUserChoice />
     </div>
   );
 };
