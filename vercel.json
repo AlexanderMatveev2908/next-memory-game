@@ -9,7 +9,8 @@
     "silent": false,
     "deployments": {
       "enabled": true,
-      "productionBranch": "main"
+      "productionBranch": "main",
+      "previewDeploymentSuffix": false
     }
   }
 }
