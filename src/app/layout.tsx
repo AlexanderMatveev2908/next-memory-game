@@ -4,6 +4,9 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "Memory game",
   description: "Memory game app Becoder",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

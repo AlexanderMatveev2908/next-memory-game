@@ -2,15 +2,15 @@ import { notFound } from "next/navigation";
 import type { FC } from "react";
 
 type PropsType = {
-  params: {
+  params: Promise<{
     bananaID: string;
-  };
+  }>;
 };
 
 const BananaPage: FC<PropsType> = async ({ params }) => {
-  const { bananaID } = await params;
+  console.log(typeof params);
 
-  console.log(bananaID);
+  const { bananaID } = await params;
 
   return +bananaID !== 5 ? notFound() : <div>{bananaID}</div>;
 };
