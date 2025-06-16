@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import { chakraPetch } from "@/fonts/chakraPetch";
 
 export const metadata: Metadata = {
   title: "Memory game",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>{children}</body>
+      <body className={`${chakraPetch.className} antialiased`}>{children}</body>
     </html>
   );
 }

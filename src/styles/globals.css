@@ -1,16 +1,99 @@
 @import "tailwindcss";
-@font-face {
-  font-family: "Sour Gummy";
-  src: url("/fonts/Sour_Gummy/SourGummy-Italic-VariableFont_wdth,wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: italic;
+.txt_h__sm {
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
 }
-@font-face {
-  font-family: "Sour Gummy";
-  src: url("/fonts/Sour_Gummy/SourGummy-VariableFont_wdth,wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
+
+.txt_h__md {
+  font-size: 20px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
 }
-* {
-  font-family: "Sour Gummy", sans-serif;
+
+.txt_h__lg {
+  font-size: 32px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.txt_h__xl {
+  font-size: 40px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.txt_h__2xl {
+  font-size: 48px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.txt_btn__sm {
+  font-size: 20px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.txt_btn__md {
+  font-size: 26px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.txt_btn__lg {
+  font-size: 32px;
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.spac_n {
+  margin: 0px;
+}
+
+.spac_2xs {
+  margin: 8px;
+}
+
+.spac_xs {
+  margin: 16px;
+}
+
+.spac_sm {
+  margin: 24px;
+}
+
+.spac_md {
+  margin: 32px;
+}
+
+.spac_lg {
+  margin: 40px;
+}
+
+.spac_xl {
+  margin: 48px;
+}
+
+.spac_2xl {
+  margin: 80px;
+}
+
+:root {
+  --green_app: #03a8a0;
+  --green_0: #d8e1de;
+  --green_1: #bcd9d1;
+  --green_2: #97bdb8;
+  --green_3: #36695f;
+  --green_4: #143b37;
+  --white_0: #ffffff;
+  --white_1: #f6f6f6;
 }
