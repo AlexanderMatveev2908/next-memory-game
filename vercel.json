@@ -4,7 +4,6 @@
       "ONLY_DEPLOY_MAIN": "true"
     }
   },
-  "hooks": {},
   "github": {
     "enabled": true,
     "silent": false,
