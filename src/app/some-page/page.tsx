@@ -8,8 +8,8 @@ const Page: FC = () => {
   return (
     <div className="">
       <GamePad
-        className="w-[100px] h-[100px]"
-        {...{ fill: "red", stroke: "blue" }}
+        className="w-[350px] h-[350px] "
+        {...{ fill: "gray", stroke: "blue" }}
       />
     </div>
   );
