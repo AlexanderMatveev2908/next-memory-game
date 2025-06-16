@@ -1,10 +1,11 @@
 import type { FC } from "react";
 import s from "./page.module.css";
+import OptUserChoice from "@/features/optUserChoice/components/OptUserChoice";
 
 const Home: FC = () => {
   return (
     <div className={`${s.page}`}>
-      <span className="txt__3">Home</span>
+      <OptUserChoice />
     </div>
   );
 };
