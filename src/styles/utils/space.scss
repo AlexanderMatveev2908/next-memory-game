@@ -1,0 +1,40 @@
+@use "sass:string";
+
+$sizes: (
+  none: 0px,
+  2xs: 8px,
+  xs: 16px,
+  sm: 24px,
+  md: 32px,
+  lg: 40px,
+  xl: 48px,
+  2xl: 80px,
+);
+
+@each $size, $value in $sizes {
+  @if $size == none {
+    .spac_n {
+      margin: $value;
+    }
+  } @else {
+    .spac_#{$size} {
+      margin: $value;
+    }
+  }
+}
+// @each $size, $value in $sizes {
+//   @if $size == none {
+//     .spac_n {
+//       margin: $value;
+//     }
+//   } @else if string.index("#{$size}", "2") ==1 {
+//     $suffix: string.slice("#{$size}", 2);
+//     .spac_2_#{$suffix} {
+//       margin: $value;
+//     }
+//   } @else {
+//     .spac_#{$size} {
+//       margin: $value;
+//     }
+//   }
+// }
