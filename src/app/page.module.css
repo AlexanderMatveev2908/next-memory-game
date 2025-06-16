@@ -1,0 +1,4 @@
+.page {
+  @apply h-full min-h-screen w-full;
+  background: var(--green_3);
+}
