@@ -1,0 +1,16 @@
+{
+  "build": {
+    "env": {
+      "ONLY_DEPLOY_MAIN": "true"
+    }
+  },
+  "hooks": {},
+  "github": {
+    "enabled": true,
+    "silent": false,
+    "deployments": {
+      "enabled": true,
+      "productionBranch": "main"
+    }
+  }
+}
