@@ -12,6 +12,8 @@ const BananaPage: FC<PropsType> = async ({ params }) => {
 
   const { bananaID } = await params;
 
+  console.log(process.env.BANANAS_SUPPLY__SERVER);
+
   return +bananaID !== 5 ? notFound() : <div>{bananaID}</div>;
 };
 

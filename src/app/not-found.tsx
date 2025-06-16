@@ -9,6 +9,9 @@ const NotFound: FC = () => {
   useEffect(() => {
     nav.replace("/");
   }, [nav]);
+  //   useEffect(() => {
+  //   throw new Error("page not exist");
+  // }, []);
 
   return <div>page not exist</div>;
 };
