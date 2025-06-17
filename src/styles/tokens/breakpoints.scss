@@ -1,0 +1,12 @@
+// ? tailwind by default already have 768pc as break md but like to experiment things and ideas with custom things sometimes ✌🏽
+
+$breakpoints: (
+  md: 768px,
+  xl: 1440px,
+);
+
+@mixin res($break) {
+  @media (min-width: map-get($breakpoints,$break)) {
+    @content;
+  }
+}
