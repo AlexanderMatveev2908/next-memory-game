@@ -1,5 +1,7 @@
 @use "./t.css";
 
+@use "sass:list";
+
 @use "./tokens/txt.scss";
 @use "./tokens/space.scss";
 @use "./tokens/clrs.scss";
@@ -24,15 +26,19 @@
 //   font-family: "Sour Gummy", sans-serif;
 // }
 
+$green-colors: (#d8e1de, #bcd9d1, #97bdb8, #36695f, #143b37);
+$white-colors: (#ffffff, #f6f6f6);
+
 :root {
   --green_app: #03a8a0;
 
-  --green_0: #d8e1de;
-  --green_1: #bcd9d1;
-  --green_2: #97bdb8;
-  --green_3: #36695f;
-  --green_4: #143b37;
+  @for $i from 1 through list.length($green-colors) {
+    $val: list.nth($green-colors, $i);
+    --green_#{($i - 1)}: #{$val};
+  }
 
-  --white_0: #ffffff;
-  --white_1: #f6f6f6;
+  @for $i from 1 through list.length($white-colors) {
+    $val: list.nth($white-colors, $i);
+    --white_#{($i - 1)}: #{$val};
+  }
 }
