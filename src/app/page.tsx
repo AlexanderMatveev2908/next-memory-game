@@ -4,7 +4,7 @@ import { HomeStyled } from "./HomeStyled";
 
 const Home: FC = () => {
   return (
-    <HomeStyled className=" h-full min-h-screen w-full grid grid-cols-1 justify-items-center items-center">
+    <HomeStyled className="h-full min-h-screen w-full grid grid-cols-1 justify-items-center items-center">
       <OptUserChoice />
     </HomeStyled>
   );
