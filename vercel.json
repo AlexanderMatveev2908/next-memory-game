@@ -12,5 +12,6 @@
       "productionBranch": "main",
       "previewDeploymentSuffix": false
     }
-  }
+  },
+  "ignoreCommand": "tsx vercel-ignore-build-step.ts"
 }
