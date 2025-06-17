@@ -15,7 +15,9 @@ const OptUserChoice: FC = () => {
   return (
     <OptUserChoiceStyled className="w-full grid grid-cols-1">
       <div className="w-full flex justify-center h-fit">
-        <Txt {...{ txt: "memory", $fsz: "var(--h__xl)" }} />
+        <Txt
+          {...{ txt: "memory", $fsz: "var(--h__xl)", $clr: "var(--white_1)" }}
+        />
       </div>
 
       <OptUserChoiceForm />

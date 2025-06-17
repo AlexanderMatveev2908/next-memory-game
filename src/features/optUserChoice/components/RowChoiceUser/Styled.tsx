@@ -7,7 +7,7 @@ export const RowChoiceUserStyled = styled.div`
   gap: 8px;
 
   .label {
-    font-size: var(--h__sm);
+    font-size: var(--h__xs);
     font-weight: 700;
     color: var(--green_4);
   }

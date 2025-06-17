@@ -12,12 +12,16 @@ export const BtnChoiceStyled = styled.div`
 
   span {
     color: var(--white_1);
-    font-size: var(--h__sm);
+    font-size: var(--h__xs);
     font-weight: 700;
   }
 
   ${resp("md")} {
     width: 252px;
     height: 52px;
+
+    span {
+      font-size: var(--btn__md);
+    }
   }
 `;

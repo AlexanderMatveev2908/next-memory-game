@@ -13,7 +13,7 @@ const RowChoiceUser: FC<PropsType> = ({ el }) => {
   return (
     <RowChoiceUserStyled className="w-full grid grid-cols-1">
       <div className="w-full flex justify-start">
-        <label className="label">{el.label}</label>
+        <span className="label">{el.label}</span>
       </div>
 
       <div className="row_btns grid grid-cols-2">
