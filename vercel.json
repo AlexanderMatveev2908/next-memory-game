@@ -13,5 +13,5 @@
       "previewDeploymentSuffix": false
     }
   },
-  "ignoreCommand": "yarn dlx tsx vercel-ignore-build-step.ts"
+  "ignoreCommand": "npx tsx vercel-ignore-build-step.ts"
 }
