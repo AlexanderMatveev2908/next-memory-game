@@ -1,0 +1,7 @@
+$white-colors: (white_0, white_1);
+
+@each $name in $white-colors {
+  .txt_clr__#{$name} {
+    color: var(--#{$name});
+  }
+}

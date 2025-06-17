@@ -47,5 +47,3 @@ I use a few conventions recurring in my personal projects
 
 I am always open to any suggestion and advice or alternative ways to implement functionalities, so i would be glad to listen your ideas 🧐
 Thanks for the time checking out the project ✌🏼
-
-<!--  -->
