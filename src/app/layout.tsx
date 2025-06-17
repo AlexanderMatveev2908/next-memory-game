@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { chakraPetch } from "@/fonts/chakraPetch";
+import { chakraPetch } from "@/fonts";
 import Providers from "./Providers";
 
 export const metadata: Metadata = {

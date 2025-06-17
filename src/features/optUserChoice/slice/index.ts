@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GridSizeType, ThemeType } from "./types/etc";
+import { GridSizeType, ThemeType } from "../types";
 
 const initState = {
   theme: "",

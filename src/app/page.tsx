@@ -1,5 +1,7 @@
+"use client";
+
 import type { FC } from "react";
-import OptUserChoice from "@/features/optUserChoice/components/OptUserChoice";
+import OptUserChoice from "@/app/components/Home/OptUserChoice";
 import { HomeStyled } from "./HomeStyled";
 
 const Home: FC = () => {

@@ -5,7 +5,7 @@ import OptUserChoiceHeader from "./fragments/Header/OptUserChoiceHeader";
 import { OptUserChoiceStyled } from "./Styled";
 import OptUserChoiceForm from "./fragments/Form/OptUserChoiceForm";
 import { useSelector } from "react-redux";
-import { getUserChoiceState } from "../slice";
+import { getUserChoiceState } from "../../../features/optUserChoice/slice";
 
 const OptUserChoice: FC = () => {
   const state = useSelector(getUserChoiceState);

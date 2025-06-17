@@ -1,9 +1,10 @@
 "use client";
 
 import type { FC } from "react";
+import { ChoicesUserStyled } from "./Styled";
 
 const ChoicesUser: FC = () => {
-  return <div></div>;
+  return <ChoicesUserStyled></ChoicesUserStyled>;
 };
 
 export default ChoicesUser;
