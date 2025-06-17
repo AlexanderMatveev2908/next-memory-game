@@ -1,6 +1,6 @@
 "use client";
 
-import { resp } from "@/core/constants/breakpoints";
+import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
 export const OptUserChoiceFormStyled = styled.div`
