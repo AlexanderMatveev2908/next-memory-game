@@ -3,25 +3,23 @@
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
-export const BtnChoiceStyled = styled.div`
+export const BtnStyled = styled.div`
   cursor: pointer;
   background: var(--green_app);
-  width: 131px;
-  height: 40px;
   border-radius: 26px;
 
   span {
     color: var(--white_1);
-    font-size: var(--h__xs);
+    font-size: var(--h__sm);
     font-weight: 700;
+    padding: 10.5px 35px;
   }
 
   ${resp("md")} {
-    width: 252px;
-    height: 52px;
-
+    border-radius: 40px;
     span {
       font-size: var(--btn__md);
+      padding: 9.5px 72.5px;
     }
   }
 `;

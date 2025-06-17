@@ -1,9 +1,9 @@
 "use client";
 
 import type { FC } from "react";
-import { RowChoiceUserStyled } from "./Styled";
 import { OptItemFormFieldType } from "../../types/uiFactory";
-import BtnChoice from "@/shared/components/buttons/BtnChoice";
+import { RowChoiceUserStyled } from "./Styled";
+import Btn from "@/shared/components/buttons/Btn";
 
 type PropsType = {
   el: OptItemFormFieldType;
@@ -18,7 +18,7 @@ const RowChoiceUser: FC<PropsType> = ({ el }) => {
 
       <div className="row_btns grid grid-cols-2">
         {el.vals!.map((btn) => (
-          <BtnChoice key={btn.id} {...{ label: btn.label! }} />
+          <Btn key={btn.id} {...{ label: btn.label! }} />
         ))}
       </div>
     </RowChoiceUserStyled>
