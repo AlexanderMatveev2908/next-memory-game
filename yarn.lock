@@ -4107,12 +4107,14 @@ __metadata:
     next: "npm:15.3.3"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
+    react-hook-form: "npm:^7.58.0"
     react-redux: "npm:^9.2.0"
     sass: "npm:^1.89.2"
     styled-components: "npm:^6.1.19"
     tailwindcss: "npm:^4"
     tsx: "npm:^4.20.3"
     typescript: "npm:^5"
+    uuid: "npm:^11.1.0"
     zod: "npm:^3.25.67"
   languageName: unknown
   linkType: soft
@@ -4522,6 +4524,15 @@ __metadata:
   peerDependencies:
     react: ^19.1.0
   checksum: 10c0/3e26e89bb6c67c9a6aa86cb888c7a7f8258f2e347a6d2a15299c17eb16e04c19194e3452bc3255bd34000a61e45e2cb51e46292392340432f133e5a5d2dfb5fc
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.58.0":
+  version: 7.58.0
+  resolution: "react-hook-form@npm:7.58.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10c0/9e87bf1dfb43157ffec1b112092e8c5b2b9d0056c2a8bdea6c15e08d510b365915101f499f2e7698e16e94541ac82b26ab8e3b05af5b0cccfc82d29cf31c1b0b
   languageName: node
   linkType: hard
 
@@ -5556,6 +5567,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
   checksum: 10c0/1b8663515c0be34fa653feb724fdcce3984037c78dd4a18f68b2c8be55cc1a1084c578d5b75f158d41b5ddffc2bf5600766d1af3c19c8e329bb20af2ec6f52f4
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "uuid@npm:11.1.0"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10c0/34aa51b9874ae398c2b799c88a127701408cd581ee89ec3baa53509dd8728cbb25826f2a038f9465f8b7be446f0fbf11558862965b18d21c993684297628d4d3
   languageName: node
   linkType: hard
 
