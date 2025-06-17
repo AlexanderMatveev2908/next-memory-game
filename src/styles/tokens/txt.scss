@@ -1,31 +1,33 @@
-$sizes_h: (
-  sm: 16px,
-  md: 20px,
-  lg: 32px,
-  xl: 40px,
-  2xl: 48px,
+$sizes: (
+  h: (
+    sm: 16px,
+    md: 20px,
+    lg: 32px,
+    xl: 40px,
+    2xl: 48px,
+  ),
+  btn: (
+    sm: 20px,
+    md: 26px,
+    lg: 32px,
+  ),
 );
 
-$sizes_btn: (
-  sm: 20px,
-  md: 26px,
-  lg: 32px,
-);
-
-@each $name, $size in $sizes_h {
-  .txt_h__#{$name} {
-    font-size: $size;
-    line-height: 125%;
-    letter-spacing: 0;
-    font-weight: 700;
+:root {
+  @each $type, $map in $sizes {
+    @each $name, $value in $map {
+      --#{$type}__#{$name}: #{$value};
+    }
   }
 }
 
-@each $name, $size in $sizes_btn {
-  .txt_btn__#{$name} {
-    font-size: $size;
-    line-height: 125%;
-    letter-spacing: 0;
-    font-weight: 700;
+@each $type, $map in $sizes {
+  @each $name, $value in $map {
+    .txt_#{$type}__#{$name} {
+      font-size: var(--#{$type}__#{$name});
+      line-height: 125%;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
   }
 }

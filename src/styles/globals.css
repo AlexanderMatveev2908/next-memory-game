@@ -1,55 +1,66 @@
 @import "tailwindcss";
+:root {
+  --h__sm: 16px;
+  --h__md: 20px;
+  --h__lg: 32px;
+  --h__xl: 40px;
+  --h__2xl: 48px;
+  --btn__sm: 20px;
+  --btn__md: 26px;
+  --btn__lg: 32px;
+}
+
 .txt_h__sm {
-  font-size: 16px;
+  font-size: var(--h__sm);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
 }
 
 .txt_h__md {
-  font-size: 20px;
+  font-size: var(--h__md);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
 }
 
 .txt_h__lg {
-  font-size: 32px;
+  font-size: var(--h__lg);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
 }
 
 .txt_h__xl {
-  font-size: 40px;
+  font-size: var(--h__xl);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
 }
 
 .txt_h__2xl {
-  font-size: 48px;
+  font-size: var(--h__2xl);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
 }
 
 .txt_btn__sm {
-  font-size: 20px;
+  font-size: var(--btn__sm);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
 }
 
 .txt_btn__md {
-  font-size: 26px;
+  font-size: var(--btn__md);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
 }
 
 .txt_btn__lg {
-  font-size: 32px;
+  font-size: var(--btn__lg);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
@@ -85,6 +96,14 @@
 
 .spac_2xl {
   margin: 80px;
+}
+
+.txt_clr__white_0 {
+  color: var(--white_0);
+}
+
+.txt_clr__white_1 {
+  color: var(--white_1);
 }
 
 :root {

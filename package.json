@@ -7,14 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-install": "if [ \"$VERCEL_GIT_COMMIT_REF\" != \"main\" ]; then echo 'Skipping install: not on main branch ✅'; exit 0; fi && corepack enable && corepack prepare yarn@4.9.1 --activate && yarn set version berry && echo 'nodeLinker: node-modules' > .yarnrc.yml && yarn install",
+    "vercel-install": "corepack enable && corepack prepare yarn@4.9.1 --activate && yarn set version berry && echo 'nodeLinker: node-modules' > .yarnrc.yml && yarn install",
     "vercel-build": "if [ \"$VERCEL_GIT_COMMIT_REF\" != \"main\" ]; then echo 'Skipping build on non-main branch ✅'; exit 0; fi && next build"
   },
   "dependencies": {
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass": "^1.89.2"
+    "sass": "^1.89.2",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -22,9 +23,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/styled-components": "^5.1.34",
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   },
   "packageManager": "yarn@4.9.2"

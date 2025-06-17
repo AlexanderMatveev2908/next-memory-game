@@ -1,12 +1,12 @@
 import type { FC } from "react";
-import s from "./page.module.css";
 import OptUserChoice from "@/features/optUserChoice/components/OptUserChoice";
+import { HomeStyled } from "./HomeStyled";
 
 const Home: FC = () => {
   return (
-    <div className={`${s.page}`}>
+    <HomeStyled className=" h-full min-h-screen w-full grid grid-cols-1 justify-items-center items-center">
       <OptUserChoice />
-    </div>
+    </HomeStyled>
   );
 };
 
