@@ -3,7 +3,7 @@
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
-export const RowChoiceUserStyled = styled.div`
+export const RowChoiceStyled = styled.div`
   gap: 8px;
 
   .label {

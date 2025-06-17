@@ -10,6 +10,7 @@ export const CardFormStyled = styled.div`
   gap: 40px;
 
   ${resp("md")} {
+    gap: 32px;
     padding: 75px 54.5px;
     border-radius: 20px;
   }

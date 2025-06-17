@@ -3,7 +3,7 @@
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
-export const ChoicesUserStyled = styled.div`
+export const ChoicesStyled = styled.div`
   gap: 24px;
 
   ${resp("md")} {

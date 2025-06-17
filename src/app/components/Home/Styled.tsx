@@ -3,7 +3,7 @@
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
-export const OptUserChoiceStyled = styled.div`
+export const OptGameStyled = styled.div`
   gap: 48px;
   width: 327px;
   height: 418px;

@@ -2,16 +2,16 @@
 
 import type { FC } from "react";
 import { OptItemFormFieldType } from "../../../../../../../../features/optUserChoice/types/uiFactory";
-import { RowChoiceUserStyled } from "./Styled";
-import Btn from "@/shared/components/buttons/Btn";
+import { RowChoiceStyled } from "./Styled";
+import Btn from "@/shared/components/buttons/Btn/Btn";
 
 type PropsType = {
   el: OptItemFormFieldType;
 };
 
-const RowChoiceUser: FC<PropsType> = ({ el }) => {
+const RowChoice: FC<PropsType> = ({ el }) => {
   return (
-    <RowChoiceUserStyled className="w-full grid grid-cols-1">
+    <RowChoiceStyled className="w-full grid grid-cols-1">
       <div className="w-full flex justify-start">
         <span className="label">{el.label}</span>
       </div>
@@ -28,8 +28,8 @@ const RowChoiceUser: FC<PropsType> = ({ el }) => {
           />
         ))}
       </div>
-    </RowChoiceUserStyled>
+    </RowChoiceStyled>
   );
 };
 
-export default RowChoiceUser;
+export default RowChoice;
