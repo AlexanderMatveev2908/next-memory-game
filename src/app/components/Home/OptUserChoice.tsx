@@ -2,10 +2,10 @@
 
 import type { FC } from "react";
 import { OptUserChoiceStyled } from "./Styled";
-import OptUserChoiceForm from "./fragments/Form/OptUserChoiceForm";
 import { useSelector } from "react-redux";
 import { getUserChoiceState } from "../../../features/optUserChoice/slice";
 import Txt from "@/shared/components/Txt/Txt";
+import CardForm from "./fragments/Form/CardForm";
 
 const OptUserChoice: FC = () => {
   const state = useSelector(getUserChoiceState);
@@ -20,7 +20,7 @@ const OptUserChoice: FC = () => {
         />
       </div>
 
-      <OptUserChoiceForm />
+      <CardForm />
     </OptUserChoiceStyled>
   );
 };

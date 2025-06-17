@@ -1,7 +1,7 @@
 "use client";
 
 import type { FC } from "react";
-import { OptItemFormFieldType } from "../../types/uiFactory";
+import { OptItemFormFieldType } from "../../../../../../../../features/optUserChoice/types/uiFactory";
 import { RowChoiceUserStyled } from "./Styled";
 import Btn from "@/shared/components/buttons/Btn";
 
@@ -18,7 +18,14 @@ const RowChoiceUser: FC<PropsType> = ({ el }) => {
 
       <div className="row_btns grid grid-cols-2">
         {el.vals!.map((btn) => (
-          <Btn key={btn.id} {...{ label: btn.label! }} />
+          <Btn
+            key={btn.id}
+            {...{
+              label: btn.label!,
+              $fsz: "var(--h__xs)",
+              $fsz_md: "var(--h__md)",
+            }}
+          />
         ))}
       </div>
     </RowChoiceUserStyled>

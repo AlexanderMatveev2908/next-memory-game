@@ -3,7 +3,7 @@
 import type { FC } from "react";
 import { ChoicesUserStyled } from "./Styled";
 import { fieldsOptUserChoice } from "@/features/optUserChoice/uiFactory/forms";
-import RowChoiceUser from "@/features/optUserChoice/components/RowChoiceUser/RowChoiceUser";
+import RowChoiceUser from "@/app/components/Home/fragments/Form/fragments/ChoicesUser/RowChoiceUser/RowChoiceUser";
 
 const ChoicesUser: FC = () => {
   return (
