@@ -5,8 +5,12 @@ import styled from "styled-components";
 
 export const OptUserChoiceStyled = styled.div`
   gap: 48px;
+  width: 327px;
+  height: 418px;
 
   ${resp("md")} {
-    gap: 60px;
+    gap: 80px;
+    width: 654px;
+    height: 600px;
   }
 `;

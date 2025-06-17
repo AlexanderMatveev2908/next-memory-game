@@ -1,7 +1,7 @@
 import { decap } from "@/core/lib/style";
 import { GridSizeType, ThemeType } from "../types";
 import { addNestedIDs } from "@/core/lib/ids";
-import { OptItemFormFieldType } from "@/shared/types/uiFactory";
+import { OptItemFormFieldType } from "../types/uiFactory";
 
 export const fieldsOptUserChoice = addNestedIDs<OptItemFormFieldType>([
   {
