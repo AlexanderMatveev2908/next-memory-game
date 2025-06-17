@@ -1,5 +1,7 @@
+"use client";
+
+import { resp } from "@/core/lib/style";
 import styled from "styled-components";
-import { resp } from "@/core/constants/breakpoints";
 
 export const ChoicesUserStyled = styled.div`
   gap: 24px;

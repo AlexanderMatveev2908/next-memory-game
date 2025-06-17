@@ -1,4 +1,4 @@
-import { resp } from "@/core/constants/breakpoints";
+import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
 export const OptUserChoiceStyled = styled.div`
