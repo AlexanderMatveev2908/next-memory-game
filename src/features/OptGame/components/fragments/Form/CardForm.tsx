@@ -77,6 +77,7 @@ const CardForm: FC = () => {
               type: "submit",
               $fsz: "var(--h__sm)",
               $fsz_md: "var(--h__lg)",
+              $hoverOpc: "0.7",
               isDisabled: !isValid,
             }}
           />

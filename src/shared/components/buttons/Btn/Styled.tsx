@@ -14,6 +14,11 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
     opacity: 0.5;
   }
 
+  &:enabled:hover {
+    opacity: ${({ $hoverOpc }) => $hoverOpc ?? 1};
+    background: ${({ $hoverBg, $bg }) => $hoverBg ?? $bg};
+  }
+
   span {
     color: var(--white_1);
     font-size: ${({ $fsz }) => $fsz ?? "var(--btn__xs)"};

@@ -11,6 +11,8 @@ export type PropsTypeBtnChoice = {
   $fsz?: string;
   $fsz_md?: string;
   $bg?: string;
+  $hoverBg?: string;
+  $hoverOpc?: string;
 };
 
 const Btn: FC<PropsTypeBtnChoice> = ({
