@@ -7,5 +7,6 @@ export { default as GamePad } from "./GamePad";
 export { default as HandSpock } from "./HandSpock";
 export { default as LiraSign } from "./LiraSign";
 export { default as Moon } from "./Moon";
+export { default as Pointer } from "./Pointer";
 export { default as Snowflake } from "./Snowflake";
 export { default as Sun } from "./Sun";

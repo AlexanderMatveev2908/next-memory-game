@@ -7,15 +7,15 @@ export const fieldsOptUserChoice = addNestedIDs<OptItemFormFieldType>([
   {
     label: "Select Theme",
     field: "theme",
-    vals: Object.values(ThemeType).map((v) => ({
+    fields: Object.values(ThemeType).map((v) => ({
       label: decap(v),
       v,
     })),
   },
   {
     label: "Grid Size",
-    field: "griSize",
-    vals: Object.values(GridSizeType).map((v) => ({
+    field: "gridSize",
+    fields: Object.values(GridSizeType).map((v) => ({
       label: v,
       v,
     })),

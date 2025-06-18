@@ -1,9 +1,9 @@
-import { userChoiceSlice } from "@/features/optUserChoice/slice";
+import { optGameSlice } from "@/features/OptGame/slice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
-    userChoice: userChoiceSlice.reducer,
+    userChoice: optGameSlice.reducer,
   },
 
   middleware: (getDefMiddleware) => getDefMiddleware(),
