@@ -27,5 +27,5 @@ export const optGameSlice = createSlice({
   },
 });
 
-export const getUserChoiceState = (state: { userChoice: OptGameStateType }) =>
+export const getOptGameS = (state: { userChoice: OptGameStateType }) =>
   state.userChoice;
