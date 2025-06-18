@@ -1,4 +1,4 @@
-import { userChoiceSlice } from "@/features/optUserChoice/slice";
+import { userChoiceSlice } from "@/features/OptGame/slice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({

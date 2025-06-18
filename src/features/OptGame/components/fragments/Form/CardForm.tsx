@@ -10,7 +10,7 @@ import {
   schemaOptUserChoice,
 } from "@/features/OptGame/paperwork/schema";
 import { fieldsOptUserChoice } from "@/features/OptGame/uiFactory/forms";
-import RowChoice from "./fragments/Choices/RowChoiceUser/RowChoice";
+import RowChoice from "./fragments/RowChoiceUser/RowChoice";
 
 const CardForm: FC = () => {
   const formCtx = useForm<OptUserChoiceFormType>({
