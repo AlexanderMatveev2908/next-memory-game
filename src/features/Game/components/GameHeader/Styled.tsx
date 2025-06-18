@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "styled-components";
 import { resp } from "@/core/lib/style";
 

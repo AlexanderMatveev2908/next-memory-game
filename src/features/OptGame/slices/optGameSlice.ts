@@ -28,4 +28,4 @@ export const optGameSlice = createSlice({
   },
 });
 
-export const getOptGameS = (state: RootStateType) => state.optGame;
+export const getOptGameState = (state: RootStateType) => state.optGame;
