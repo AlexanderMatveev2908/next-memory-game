@@ -1,9 +1,11 @@
-import { optGameSlice } from "@/features/OptGame/slice";
+import { mobilePopSlice } from "@/features/Game/slices/mobilePopSlice";
+import { optGameSlice } from "@/features/OptGame/slices/optGameSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
-    userChoice: optGameSlice.reducer,
+    optGame: optGameSlice.reducer,
+    mobilePop: mobilePopSlice.reducer,
   },
 
   middleware: (getDefMiddleware) => getDefMiddleware(),

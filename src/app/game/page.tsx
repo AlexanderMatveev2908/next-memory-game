@@ -1,3 +1,5 @@
+"use client";
+
 import type { FC } from "react";
 import { GameStyled } from "./Styled";
 import GameHeader from "@/features/Game/components/GameHeader/GameHeader";
