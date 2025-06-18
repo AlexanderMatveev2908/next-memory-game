@@ -26,7 +26,7 @@ const Btn: FC<PropsTypeBtnChoice> = ({
       disabled={isDisabled}
       onClick={handleClick}
       {...props}
-      className="w-full flex items-center justify-center transition-all duration-300"
+      className="btn_app w-full flex items-center justify-center transition-all duration-300"
     >
       <span>{label}</span>
     </BtnStyled>
