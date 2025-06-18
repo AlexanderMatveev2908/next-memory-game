@@ -20,7 +20,7 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   }
 
   span {
-    color: var(--white_1);
+    color: ${({ $clrTxt }) => $clrTxt ?? "var(--white_1)"};
     font-size: ${({ $fsz }) => $fsz ?? "var(--btn__xs)"};
     font-weight: 700;
   }
@@ -28,7 +28,7 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   ${resp("md")} {
     border-radius: 40px;
     span {
-      font-size: ${({ $fsz_md }) => $fsz_md ?? "var(--btn__md)"};
+      font-size: ${({ $fsz_md, $fsz }) => $fsz_md ?? $fsz};
     }
   }
 `;

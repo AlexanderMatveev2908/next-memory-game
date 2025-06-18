@@ -13,6 +13,7 @@ export type PropsTypeBtnChoice = {
   $bg?: string;
   $hoverBg?: string;
   $hoverOpc?: string;
+  $clrTxt?: string;
 };
 
 const Btn: FC<PropsTypeBtnChoice> = ({

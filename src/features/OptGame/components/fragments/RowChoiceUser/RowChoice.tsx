@@ -45,6 +45,7 @@ const RowChoice: FC<PropsType> = ({ el }) => {
                 $bg:
                   field.v === valForm ? "var(--green_app)" : "var(--green_1)",
                 $hoverBg: field.v !== valForm ? "var(--green_2)" : "",
+                $clrTxt: "var(--white_1)",
                 handleClick: () => handleClick(field.v!),
               }}
             />

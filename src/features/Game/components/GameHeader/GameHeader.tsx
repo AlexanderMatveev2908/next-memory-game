@@ -36,6 +36,7 @@ const GameHeader: FC<PropsType> = ({}) => {
             label: "Menu",
             $bg: "var(--green_app)",
             $fsz: "var(--h__xs)",
+            $clrTxt: "var(--white_1)",
             handleClick,
           }}
         />
