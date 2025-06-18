@@ -11,7 +11,10 @@ import {
 import { fieldsOptUserChoice } from "@/features/OptGame/uiFactory/forms";
 import RowChoice from "./fragments/RowChoiceUser/RowChoice";
 import { useDispatch } from "react-redux";
-import { initStateOptGame, optGameSlice } from "@/features/OptGame/slice";
+import {
+  initStateOptGame,
+  optGameSlice,
+} from "@/features/OptGame/slices/optGameSlice";
 import { getStorage, saveStorage } from "@/core/lib/storage";
 import { CardFormStyled } from "./Styled";
 

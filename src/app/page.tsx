@@ -5,7 +5,7 @@ import { HomeStyled } from "./Styled";
 import Txt from "@/shared/components/Txt/Txt";
 import CardForm from "@/features/OptGame/components/CardForm";
 import { useSelector } from "react-redux";
-import { getOptGameS } from "@/features/OptGame/slice";
+import { getOptGameS } from "@/features/OptGame/slices/optGameSlice";
 import { useRouter } from "next/navigation";
 import { isStr } from "@/core/lib/dataStructure";
 
