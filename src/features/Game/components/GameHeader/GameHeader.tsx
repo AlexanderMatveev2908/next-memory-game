@@ -28,13 +28,14 @@ const GameHeader: FC = () => {
         }}
       />
 
-      <div className="h-[40px] w-[78px]">
+      <div className="flex w-fit">
         <Btn
           {...{
             label: "Menu",
             $bg: "var(--green__app)",
             $fsz: "var(--h__xs)",
             $clrTxt: "var(--white__1)",
+            $pad: "10px 18px",
             handleClick,
           }}
         />

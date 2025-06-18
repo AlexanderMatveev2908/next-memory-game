@@ -15,7 +15,7 @@ export const RowChoiceStyled = styled.div`
   }
 
   .wrap__choice_btn {
-    height: 40px;
+    /* height: 40px; */
   }
 
   ${resp("md")} {
@@ -30,7 +30,7 @@ export const RowChoiceStyled = styled.div`
     }
 
     .wrap__choice_btn {
-      height: 52px;
+      /* height: 52px; */
     }
   }
 `;

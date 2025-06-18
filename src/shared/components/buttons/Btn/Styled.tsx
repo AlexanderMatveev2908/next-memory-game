@@ -6,6 +6,7 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   cursor: pointer;
   background: ${({ $bg }) => $bg ?? "var(--green__app)"};
   border-radius: 26px;
+  padding: ${({ $pad }) => $pad ?? "0"};
 
   &:disabled {
     cursor: default;
@@ -25,6 +26,8 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
 
   ${resp("md")} {
     border-radius: 40px;
+    padding: ${({ $padMd, $pad }) => $padMd ?? $pad};
+
     span {
       font-size: ${({ $fsz_md, $fsz }) => $fsz_md ?? $fsz};
     }
