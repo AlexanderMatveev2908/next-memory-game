@@ -19,7 +19,7 @@ const GameHeader: FC<PropsType> = ({}) => {
         }}
       />
 
-      <div className="w-full max-w-fit">
+      <div className="h-[40px] w-[78px]">
         <Btn
           {...{ label: "Menu", $bg: "var(--green_app)", $fsz: "var(--h__xs)" }}
         />
