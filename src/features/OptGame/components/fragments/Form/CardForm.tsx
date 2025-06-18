@@ -5,11 +5,12 @@ import { CardFormStyled } from "./Styled";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Btn from "@/shared/components/buttons/Btn/Btn";
-import Choices from "./fragments/Choices/Choices";
 import {
   OptUserChoiceFormType,
   schemaOptUserChoice,
 } from "@/features/OptGame/paperwork/schema";
+import { fieldsOptUserChoice } from "@/features/OptGame/uiFactory/forms";
+import RowChoice from "./fragments/Choices/RowChoiceUser/RowChoice";
 
 const CardForm: FC = () => {
   const formCtx = useForm<OptUserChoiceFormType>({
@@ -32,7 +33,11 @@ const CardForm: FC = () => {
   return (
     <CardFormStyled className="w-full grid grid-cols-1">
       <FormProvider {...formCtx}>
-        <Choices />
+        <div className="choices w-full grid grid-cols-1">
+          {fieldsOptUserChoice.map((el) => (
+            <RowChoice key={el.id} {...{ el }} />
+          ))}
+        </div>
 
         <div className="w-full flex">
           <Btn
