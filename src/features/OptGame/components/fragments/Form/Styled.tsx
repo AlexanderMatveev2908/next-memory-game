@@ -3,7 +3,7 @@
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
-export const CardFormStyled = styled.div`
+export const CardFormStyled = styled.form`
   background: var(--white_1);
   padding: 40px 25.5px;
   border-radius: 10px;

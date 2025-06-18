@@ -7,6 +7,8 @@ export const saveStorage = <T>(key: StorageKey, val: string | T): void =>
   );
 
 export const getStorage = <T>(key: StorageKey): T | null => {
+  if (typeof window === "undefined") return null;
+
   const data = sessionStorage.getItem(key);
 
   if (typeof data === "object") return null;

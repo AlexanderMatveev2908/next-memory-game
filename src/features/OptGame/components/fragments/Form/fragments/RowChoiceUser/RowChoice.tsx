@@ -5,22 +5,27 @@ import { RowChoiceStyled } from "./Styled";
 import Btn from "@/shared/components/buttons/Btn/Btn";
 import { useFormContext } from "react-hook-form";
 import { OptItemFormFieldType } from "@/features/OptGame/types/uiFactory";
-import { OptUserChoiceFormType } from "@/features/OptGame/paperwork/schema";
+import { OptGameFormType } from "@/features/OptGame/paperwork/schema";
+import { ThemeType } from "@/features/OptGame/types";
 
 type PropsType = {
   el: OptItemFormFieldType;
 };
 
 const RowChoice: FC<PropsType> = ({ el }) => {
-  const { watch, setValue, register } = useFormContext<OptUserChoiceFormType>();
+  const { watch, setValue, register } = useFormContext<OptGameFormType>();
 
-  const valForm = watch(el.field as keyof OptUserChoiceFormType);
+  const valForm = watch(el.field as keyof OptGameFormType);
   const handleClick = (v: string) => {
-    setValue(el.field as keyof OptUserChoiceFormType, valForm === v ? "" : v, {
-      shouldValidate: true,
-      shouldDirty: true,
-      shouldTouch: true,
-    });
+    setValue(
+      el.field as keyof OptGameFormType,
+      valForm === v ? ("" as ThemeType) : (v as ThemeType),
+      {
+        shouldValidate: true,
+        shouldDirty: true,
+        shouldTouch: true,
+      }
+    );
   };
 
   return (
@@ -43,10 +48,7 @@ const RowChoice: FC<PropsType> = ({ el }) => {
           />
         ))}
 
-        <input
-          type="hidden"
-          {...register(el.field as keyof OptUserChoiceFormType)}
-        />
+        <input type="hidden" {...register(el.field as keyof OptGameFormType)} />
       </div>
     </RowChoiceStyled>
   );

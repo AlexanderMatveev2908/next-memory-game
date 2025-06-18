@@ -1,18 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GridSizeType, ThemeType } from "../types";
 
-const initState = {
-  theme: "",
-  gridSize: "",
+export type OptGameStateType = {
+  theme: ThemeType;
+  gridSize: GridSizeType;
 };
 
-export type UserChoiceState = typeof initState;
+export const initStateOptGame: OptGameStateType = {
+  theme: "" as ThemeType,
+  gridSize: "" as GridSizeType,
+};
 
-export const userChoiceSlice = createSlice({
+export const optGameSlice = createSlice({
   name: "userChoice",
-  initialState: initState,
+  initialState: initStateOptGame,
   reducers: {
-    setState: (
+    setOpt: (
       state,
       action: PayloadAction<{ theme: ThemeType; gridSize: GridSizeType }>
     ) => {
@@ -24,5 +27,5 @@ export const userChoiceSlice = createSlice({
   },
 });
 
-export const getUserChoiceState = (state: { userChoice: UserChoiceState }) =>
+export const getUserChoiceState = (state: { userChoice: OptGameStateType }) =>
   state.userChoice;

@@ -5,6 +5,7 @@ import { BtnStyled } from "./Styled";
 
 export type PropsTypeBtnChoice = {
   label: string;
+  type?: "button" | "submit";
   isDisabled?: boolean;
   handleClick?: () => void;
   $fsz?: string;
@@ -16,10 +17,12 @@ const Btn: FC<PropsTypeBtnChoice> = ({
   label,
   handleClick,
   isDisabled,
+  type,
   ...props
 }) => {
   return (
     <BtnStyled
+      type={type ?? "button"}
       disabled={isDisabled}
       onClick={handleClick}
       {...props}
