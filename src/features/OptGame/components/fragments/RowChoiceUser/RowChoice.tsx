@@ -36,7 +36,7 @@ const RowChoice: FC<PropsType> = ({ el }) => {
 
       <div className="row_btns grid grid-cols-2">
         {el.fields!.map((field) => (
-          <div key={field.id} className="wrapper_btn w-full flex">
+          <div key={field.id} className="wrap__choice_btn w-full flex">
             <Btn
               {...{
                 label: field.label!,

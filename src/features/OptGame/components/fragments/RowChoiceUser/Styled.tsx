@@ -16,7 +16,7 @@ export const RowChoiceStyled = styled.div`
     gap: 8px;
   }
 
-  .wrapper_btn {
+  .wrap__choice_btn {
     height: 40px;
   }
 
@@ -31,7 +31,7 @@ export const RowChoiceStyled = styled.div`
       gap: 32px;
     }
 
-    .wrapper_btn {
+    .wrap__choice_btn {
       height: 52px;
     }
   }
