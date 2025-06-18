@@ -4,7 +4,7 @@ import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
 export const CardFormStyled = styled.form`
-  background: var(--white_1);
+  background: var(--white__1);
   padding: 40px 25.5px;
   border-radius: 10px;
   gap: 40px;

@@ -15,6 +15,6 @@ export const mobileBtns = [
   ...el,
   id: v4(),
   handler: chainCmlCase(el.label),
-  $bg: i ? "var(--green_0)" : "var(--green_app)",
-  $clrTxt: i ? "var(--green_3)" : "var(--white_1)",
+  $bg: i ? "var(--green__0)" : "var(--green__app)",
+  $clrTxt: i ? "var(--green__3)" : "var(--white__1)",
 }));

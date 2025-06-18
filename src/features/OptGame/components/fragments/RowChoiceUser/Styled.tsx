@@ -9,7 +9,7 @@ export const RowChoiceStyled = styled.div`
   .label {
     font-size: var(--h__xs);
     font-weight: 700;
-    color: var(--green_4);
+    color: var(--green__4);
   }
 
   .row_btns {

@@ -27,7 +27,7 @@ const Home: FC = () => {
               txt: "memory",
               $fsz: "var(--h__lg)",
               $fsz_md: "var(--h__xl)",
-              $clr: "var(--white_1)",
+              $clr: "var(--white__1)",
             }}
           />
         </div>

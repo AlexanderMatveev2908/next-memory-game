@@ -24,7 +24,7 @@ const GameHeader: FC<PropsType> = ({}) => {
       <Txt
         {...{
           txt: "memory",
-          $clr: "var(--green_3)",
+          $clr: "var(--green__3)",
           $fsz: "var(--btn__md)",
           $fsz_md: "var(--h__lg)",
         }}
@@ -34,9 +34,9 @@ const GameHeader: FC<PropsType> = ({}) => {
         <Btn
           {...{
             label: "Menu",
-            $bg: "var(--green_app)",
+            $bg: "var(--green__app)",
             $fsz: "var(--h__xs)",
-            $clrTxt: "var(--white_1)",
+            $clrTxt: "var(--white__1)",
             handleClick,
           }}
         />

@@ -6,7 +6,7 @@ import { PropsTypeBtnChoice } from "./Btn";
 
 export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   cursor: pointer;
-  background: ${({ $bg }) => $bg ?? "var(--green_app)"};
+  background: ${({ $bg }) => $bg ?? "var(--green__app)"};
   border-radius: 26px;
 
   &:disabled {
@@ -20,7 +20,7 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   }
 
   span {
-    color: ${({ $clrTxt }) => $clrTxt ?? "var(--white_1)"};
+    color: ${({ $clrTxt }) => $clrTxt ?? "var(--white__1)"};
     font-size: ${({ $fsz }) => $fsz ?? "var(--btn__xs)"};
     font-weight: 700;
   }

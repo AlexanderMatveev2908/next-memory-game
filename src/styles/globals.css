@@ -110,8 +110,8 @@
   color: var(--white_0);
 }
 
-.txt_clr__white_1 {
-  color: var(--white_1);
+.txt_clr__white__1 {
+  color: var(--white__1);
 }
 
 .btn_app:enabled:hover {
@@ -125,14 +125,14 @@
 }
 
 :root {
-  --green_app: #03a8a0;
-  --green_0: #d8e1de;
-  --green_1: #bcd9d1;
-  --green_2: #97bdb8;
-  --green_3: #36695f;
-  --green_4: #143b37;
-  --white_0: #ffffff;
-  --white_1: #f6f6f6;
+  --green__app: #03a8a0;
+  --green__0: #d8e1de;
+  --green__1: #bcd9d1;
+  --green__2: #97bdb8;
+  --green__3: #36695f;
+  --green__4: #143b37;
+  --white__0: #ffffff;
+  --white__1: #f6f6f6;
 }
 
 button:disabled {

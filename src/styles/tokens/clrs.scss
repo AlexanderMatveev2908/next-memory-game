@@ -1,4 +1,4 @@
-$white-colors: (white_0, white_1);
+$white-colors: (white_0, white__1);
 
 @each $name in $white-colors {
   .txt_clr__#{$name} {
