@@ -4,12 +4,25 @@ import type { FC } from "react";
 import { OptItemFormFieldType } from "../../../../../../../../features/optUserChoice/types/uiFactory";
 import { RowChoiceStyled } from "./Styled";
 import Btn from "@/shared/components/buttons/Btn/Btn";
+import { useFormContext } from "react-hook-form";
+import { OptUserChoiceFormType } from "@/features/optUserChoice/paperwork/schema";
 
 type PropsType = {
   el: OptItemFormFieldType;
 };
 
 const RowChoice: FC<PropsType> = ({ el }) => {
+  const { watch, setValue, register } = useFormContext<OptUserChoiceFormType>();
+
+  const valForm = watch(el.field as keyof OptUserChoiceFormType);
+  const handleClick = (v: string) => {
+    setValue(el.field as keyof OptUserChoiceFormType, valForm === v ? "" : v, {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+  };
+
   return (
     <RowChoiceStyled className="w-full grid grid-cols-1">
       <div className="w-full flex justify-start">
@@ -17,16 +30,23 @@ const RowChoice: FC<PropsType> = ({ el }) => {
       </div>
 
       <div className="row_btns grid grid-cols-2">
-        {el.vals!.map((btn) => (
+        {el.fields!.map((field) => (
           <Btn
-            key={btn.id}
+            key={field.id}
             {...{
-              label: btn.label!,
+              label: field.label!,
               $fsz: "var(--h__xs)",
               $fsz_md: "var(--h__md)",
+              $bg: field.v === valForm ? "var(--green_app)" : "var(--green_2)",
+              handleClick: () => handleClick(field.v!),
             }}
           />
         ))}
+
+        <input
+          type="hidden"
+          {...register(el.field as keyof OptUserChoiceFormType)}
+        />
       </div>
     </RowChoiceStyled>
   );

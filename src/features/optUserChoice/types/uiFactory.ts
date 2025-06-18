@@ -3,5 +3,5 @@ export type OptItemFormFieldType = {
   label?: string;
   field?: string;
   v?: string;
-  vals?: OptItemFormFieldType[];
+  fields?: OptItemFormFieldType[];
 };

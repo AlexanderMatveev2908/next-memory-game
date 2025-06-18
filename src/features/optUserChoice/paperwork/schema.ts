@@ -6,4 +6,4 @@ export const schemaOptUserChoice = z.object({
   gridSize: z.enum(Object.values(GridSizeType) as [string, ...string[]]),
 });
 
-export type OptUserChoiceType = z.infer<typeof schemaOptUserChoice>;
+export type OptUserChoiceFormType = z.infer<typeof schemaOptUserChoice>;

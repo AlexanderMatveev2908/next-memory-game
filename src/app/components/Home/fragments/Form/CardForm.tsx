@@ -4,15 +4,30 @@ import type { FC } from "react";
 import { CardFormStyled } from "./Styled";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schemaOptUserChoice } from "@/features/optUserChoice/paperwork/schema";
+import {
+  OptUserChoiceFormType,
+  schemaOptUserChoice,
+} from "@/features/optUserChoice/paperwork/schema";
 import Btn from "@/shared/components/buttons/Btn/Btn";
 import Choices from "./fragments/Choices/Choices";
 
 const CardForm: FC = () => {
-  const formCtx = useForm({
-    mode: "onChange",
+  const formCtx = useForm<OptUserChoiceFormType>({
+    mode: "all",
     resolver: zodResolver(schemaOptUserChoice),
   });
+
+  const {
+    watch,
+    formState: { isDirty, dirtyFields },
+  } = formCtx;
+  const vals = watch();
+  const isValid =
+    isDirty &&
+    Object.entries(vals).every(
+      ([key, val]) =>
+        Object.keys(dirtyFields).includes(key) && !!val?.trim()?.length
+    );
 
   return (
     <CardFormStyled className="w-full grid grid-cols-1">
@@ -25,6 +40,7 @@ const CardForm: FC = () => {
               label: "Start Game",
               $fsz: "var(--h__sm)",
               $fsz_md: "var(--h__lg)",
+              isDisabled: !isValid,
             }}
           />
         </div>

@@ -4,10 +4,15 @@ import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 import { PropsTypeBtnChoice } from "./Btn";
 
-export const BtnStyled = styled.div<Omit<PropsTypeBtnChoice, "label">>`
+export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   cursor: pointer;
-  background: var(--green_app);
+  background: ${({ $bg }) => $bg ?? "var(--green_app)"};
   border-radius: 26px;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
 
   span {
     color: var(--white_1);
