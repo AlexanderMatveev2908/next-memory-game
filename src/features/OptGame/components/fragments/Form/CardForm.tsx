@@ -70,7 +70,7 @@ const CardForm: FC = () => {
           ))}
         </div>
 
-        <div className="w-full flex">
+        <div className="wrap_btn w-full flex">
           <Btn
             {...{
               label: "Start Game",

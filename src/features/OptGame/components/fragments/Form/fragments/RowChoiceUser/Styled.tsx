@@ -16,6 +16,10 @@ export const RowChoiceStyled = styled.div`
     gap: 8px;
   }
 
+  .wrapper_btn {
+    height: 40px;
+  }
+
   ${resp("md")} {
     gap: 16px;
 
@@ -25,6 +29,10 @@ export const RowChoiceStyled = styled.div`
 
     .row_btns {
       gap: 32px;
+    }
+
+    .wrapper_btn {
+      height: 52px;
     }
   }
 `;

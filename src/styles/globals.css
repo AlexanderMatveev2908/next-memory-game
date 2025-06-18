@@ -120,7 +120,7 @@
 }
 
 .btn_app:enabled:active {
-  transition: 0.1s;
+  transition: 0.1s ease-in-out;
   transform: scale(0.85);
 }
 
