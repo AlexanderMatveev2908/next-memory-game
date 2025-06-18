@@ -1,11 +1,11 @@
 "use client";
 
 import type { FC } from "react";
-import { OptItemFormFieldType } from "../../../../../../../../features/optUserChoice/types/uiFactory";
 import { RowChoiceStyled } from "./Styled";
 import Btn from "@/shared/components/buttons/Btn/Btn";
 import { useFormContext } from "react-hook-form";
-import { OptUserChoiceFormType } from "@/features/optUserChoice/paperwork/schema";
+import { OptItemFormFieldType } from "@/features/OptGame/types/uiFactory";
+import { OptUserChoiceFormType } from "@/features/OptGame/paperwork/schema";
 
 type PropsType = {
   el: OptItemFormFieldType;

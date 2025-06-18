@@ -4,12 +4,12 @@ import type { FC } from "react";
 import { CardFormStyled } from "./Styled";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Btn from "@/shared/components/buttons/Btn/Btn";
+import Choices from "./fragments/Choices/Choices";
 import {
   OptUserChoiceFormType,
   schemaOptUserChoice,
-} from "@/features/optUserChoice/paperwork/schema";
-import Btn from "@/shared/components/buttons/Btn/Btn";
-import Choices from "./fragments/Choices/Choices";
+} from "@/features/OptGame/paperwork/schema";
 
 const CardForm: FC = () => {
   const formCtx = useForm<OptUserChoiceFormType>({

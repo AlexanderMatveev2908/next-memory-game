@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { HomeStyled } from "./Styled";
-import OptGame from "@/app/components/Home/OptGame";
+import OptGame from "@/features/OptGame/components/OptGame";
 
 const Home: FC = () => {
   return (

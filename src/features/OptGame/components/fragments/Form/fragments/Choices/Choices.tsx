@@ -2,8 +2,8 @@
 
 import type { FC } from "react";
 import { ChoicesStyled } from "./Styled";
-import { fieldsOptUserChoice } from "@/features/optUserChoice/uiFactory/forms";
 import RowChoice from "./RowChoiceUser/RowChoice";
+import { fieldsOptUserChoice } from "@/features/OptGame/uiFactory/forms";
 
 const Choices: FC = () => {
   return (

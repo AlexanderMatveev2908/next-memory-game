@@ -2,6 +2,16 @@
 
 This time I build a memory game with `Next.js` following the design in `Figma` provided by [BeCoder](https://becoder.dev/en/app), a platform I am subscribed to, addressed to developers to increase their skills
 
+## ⚠️ Important
+
+At first glance, parts of the project might seem over-engineered with too much logic split into small pieces, many folders, or a high level of abstraction.
+
+Truth is: you're not wrong. I did over-complicate things a bit. 🫡
+
+But this was intentional. When I'm exploring new tools like `Next.js` or experimenting with `new architectural patterns`, I prefer to build in smaller, more controlled environments. This lets me validate ideas, test patterns, and learn from mistakes without the pressure of a huge app. 🏟️
+
+Once I feel confident, I can easily scale those ideas into larger or production-ready projects.
+
 ## Tools 🔨
 
 - **Next.js (App Router architecture) used as the main framework**

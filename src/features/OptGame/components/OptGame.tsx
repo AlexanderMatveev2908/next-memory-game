@@ -3,9 +3,9 @@
 import type { FC } from "react";
 import { OptGameStyled } from "./Styled";
 import { useSelector } from "react-redux";
-import { getUserChoiceState } from "../../../features/optUserChoice/slice";
 import Txt from "@/shared/components/Txt/Txt";
 import CardForm from "./fragments/Form/CardForm";
+import { getUserChoiceState } from "../slice";
 
 const OptGame: FC = () => {
   const state = useSelector(getUserChoiceState);
@@ -16,7 +16,12 @@ const OptGame: FC = () => {
     <OptGameStyled className="w-full grid grid-cols-1">
       <div className="w-full flex justify-center h-fit">
         <Txt
-          {...{ txt: "memory", $fsz: "var(--h__xl)", $clr: "var(--white_1)" }}
+          {...{
+            txt: "memory",
+            $fsz: "var(--h__lg)",
+            $fsz_md: "var(--h__xl)",
+            $clr: "var(--white_1)",
+          }}
         />
       </div>
 
