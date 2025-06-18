@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, type FC } from "react";
-import { CardFormStyled } from "./Styled";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Btn from "@/shared/components/buttons/Btn/Btn";
@@ -14,6 +13,7 @@ import RowChoice from "./fragments/RowChoiceUser/RowChoice";
 import { useDispatch } from "react-redux";
 import { initStateOptGame, optGameSlice } from "@/features/OptGame/slice";
 import { getStorage, saveStorage } from "@/core/lib/storage";
+import { CardFormStyled } from "./Styled";
 
 const CardForm: FC = () => {
   const formCtx = useForm<OptGameFormType>({
@@ -70,7 +70,7 @@ const CardForm: FC = () => {
           ))}
         </div>
 
-        <div className="w-full flex">
+        <div className="wrap__submit_btn w-full flex">
           <Btn
             {...{
               label: "Start Game",

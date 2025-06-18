@@ -36,17 +36,19 @@ const RowChoice: FC<PropsType> = ({ el }) => {
 
       <div className="row_btns grid grid-cols-2">
         {el.fields!.map((field) => (
-          <Btn
-            key={field.id}
-            {...{
-              label: field.label!,
-              $fsz: "var(--h__xs)",
-              $fsz_md: "var(--h__md)",
-              $bg: field.v === valForm ? "var(--green_app)" : "var(--green_1)",
-              $hoverBg: field.v !== valForm ? "var(--green_2)" : "",
-              handleClick: () => handleClick(field.v!),
-            }}
-          />
+          <div key={field.id} className="wrap__choice_btn w-full flex">
+            <Btn
+              {...{
+                label: field.label!,
+                $fsz: "var(--h__xs)",
+                $fsz_md: "var(--h__md)",
+                $bg:
+                  field.v === valForm ? "var(--green_app)" : "var(--green_1)",
+                $hoverBg: field.v !== valForm ? "var(--green_2)" : "",
+                handleClick: () => handleClick(field.v!),
+              }}
+            />
+          </div>
         ))}
 
         <input type="hidden" {...register(el.field as keyof OptGameFormType)} />

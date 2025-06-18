@@ -23,14 +23,12 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
     color: var(--white_1);
     font-size: ${({ $fsz }) => $fsz ?? "var(--btn__xs)"};
     font-weight: 700;
-    padding: 10.5px 35px;
   }
 
   ${resp("md")} {
     border-radius: 40px;
     span {
       font-size: ${({ $fsz_md }) => $fsz_md ?? "var(--btn__md)"};
-      padding: 9.5px 72.5px;
     }
   }
 `;
