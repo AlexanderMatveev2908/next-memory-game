@@ -1,18 +1,10 @@
-'use client';
+"use client";
 
-import type { FC } from 'react';
-import { GameFooterStyled } from './Styled';
+import type { FC } from "react";
+import { GameFooterStyled } from "./Styled";
 
-type PropsType = {
-  
-};
-
-const GameFooter: FC<PropsType> = ({ }) => {
-  return (
-    <GameFooterStyled>
-	
-    </GameFooterStyled>
-  );
+const GameFooter: FC = () => {
+  return <GameFooterStyled></GameFooterStyled>;
 };
 
 export default GameFooter;

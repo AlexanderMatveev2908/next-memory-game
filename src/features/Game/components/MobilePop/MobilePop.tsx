@@ -1,17 +1,44 @@
 "use client";
 
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import { MobilePopStyled } from "./Styled";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import WrapPop from "@/shared/components/wrappers/WrapPop/WrapPop";
-import { getMobilePopState } from "../../slices/mobilePopSlice";
+import { getMobilePopState, mobilePopSlice } from "../../slices/mobilePopSlice";
 import { mobileBtns } from "./uiFactory/mobileBtns";
 import Btn from "@/shared/components/buttons/Btn/Btn";
+import { optGameSlice } from "@/features/OptGame/slices/optGameSlice";
+import { useRouter } from "next/navigation";
+import { delStorage } from "@/core/lib/storage";
 
-type PropsType = {};
-
-const MobilePop: FC<PropsType> = ({}) => {
+const MobilePop: FC = () => {
   const popState = useSelector(getMobilePopState);
+
+  const dispatch = useDispatch();
+  const nav = useRouter();
+
+  const handlers = useMemo(
+    () => ({
+      restart: () => {
+        console.log("TODO ☢️");
+      },
+      newGame: () => {
+        dispatch(
+          optGameSlice.actions.setOpt({
+            theme: null,
+            gridSize: null,
+          }),
+          delStorage("optGame"),
+
+          dispatch(mobilePopSlice.actions.setIsPop(false)),
+
+          nav.replace("/")
+        );
+      },
+      resumeGame: () => dispatch(mobilePopSlice.actions.setIsPop(false)),
+    }),
+    [dispatch, nav]
+  );
 
   return (
     <WrapPop {...{ isChildPop: popState.isOpen }}>
@@ -24,6 +51,7 @@ const MobilePop: FC<PropsType> = ({}) => {
                 $fsz: "var(--h__md)",
                 $bg: el.$bg,
                 $clrTxt: el.$clrTxt,
+                handleClick: handlers[el.handler as keyof typeof handlers],
               }}
             />
           </div>

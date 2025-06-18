@@ -5,9 +5,7 @@ import { GameContentStyled } from "./Styled";
 import { useSelector } from "react-redux";
 import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
 
-type PropsType = {};
-
-const GameContent: FC<PropsType> = ({}) => {
+const GameContent: FC = () => {
   const optGame = useSelector(getOptGameState);
 
   console.log(optGame);

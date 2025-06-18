@@ -53,7 +53,8 @@ const CardForm: FC = () => {
 
   useEffect(() => {
     const formData: OptGameFormType =
-      getStorage<OptGameFormType>("optGame") ?? initStateOptGame;
+      getStorage<OptGameFormType>("optGame") ??
+      (initStateOptGame as NonNullable<OptGameFormType>);
 
     for (const k in formData) {
       setValue(

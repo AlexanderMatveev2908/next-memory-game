@@ -8,9 +8,7 @@ import { useDispatch } from "react-redux";
 import { mobilePopSlice } from "../../slices/mobilePopSlice";
 import MobilePop from "../MobilePop/MobilePop";
 
-type PropsType = {};
-
-const GameHeader: FC<PropsType> = ({}) => {
+const GameHeader: FC = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
