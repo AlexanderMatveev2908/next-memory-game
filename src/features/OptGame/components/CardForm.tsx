@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type FC } from "react";
+import { type FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Btn from "@/shared/components/buttons/Btn/Btn";
@@ -11,12 +11,11 @@ import {
 import { fieldsOptUserChoice } from "@/features/OptGame/uiFactory/forms";
 import RowChoice from "./fragments/RowChoiceUser/RowChoice";
 import { useDispatch } from "react-redux";
-import {
-  initStateOptGame,
-  optGameSlice,
-} from "@/features/OptGame/slices/optGameSlice";
-import { getStorage, saveStorage } from "@/core/lib/storage";
+import { optGameSlice } from "@/features/OptGame/slices/optGameSlice";
+import { saveStorage } from "@/core/lib/storage";
 import { CardFormStyled } from "./Styled";
+import { initGame } from "@/features/Game/lib";
+import { gameSlice } from "@/features/Game/slices/gameSlice";
 
 const CardForm: FC = () => {
   const formCtx = useForm<OptGameFormType>({
@@ -28,7 +27,6 @@ const CardForm: FC = () => {
     watch,
     formState: { isDirty, dirtyFields },
     handleSubmit,
-    setValue,
   } = formCtx;
   const vals = watch();
   const isValid =
@@ -43,26 +41,34 @@ const CardForm: FC = () => {
   const handleSave = handleSubmit(
     (data) => {
       dispatch(optGameSlice.actions.setOpt(data));
-
       saveStorage("optGame", data);
+
+      const gameBoard = initGame(data);
+      dispatch(gameSlice.actions.initGame({ gameBoard }));
+      saveStorage("game", {
+        gameBoard,
+        timer: { run: true, count: 0 },
+        moves: 0,
+      });
     },
     (errs) => {
       console.log(errs);
     }
   );
 
-  useEffect(() => {
-    const formData: OptGameFormType =
-      getStorage<OptGameFormType>("optGame") ?? initStateOptGame;
+  // useEffect(() => {
+  //   const formData: OptGameFormType =
+  //     getStorage<OptGameFormType>("optGame") ??
+  //     (initStateOptGame as NonNullable<OptGameFormType>);
 
-    for (const k in formData) {
-      setValue(
-        k as keyof OptGameFormType,
-        formData[k as keyof typeof formData],
-        { shouldValidate: true, shouldDirty: true, shouldTouch: true }
-      );
-    }
-  }, [setValue]);
+  //   for (const k in formData) {
+  //     setValue(
+  //       k as keyof OptGameFormType,
+  //       formData[k as keyof typeof formData],
+  //       { shouldValidate: true, shouldDirty: true, shouldTouch: true }
+  //     );
+  //   }
+  // }, [setValue]);
 
   return (
     <CardFormStyled onSubmit={handleSave} className="w-full grid grid-cols-1">

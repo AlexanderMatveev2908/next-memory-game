@@ -14,3 +14,14 @@ export const formatDate = (date: Date | string | number) => {
     hour12: true,
   }).format(param);
 };
+
+export const chainCmlCase = (str?: string) =>
+  str
+    ?.split(" ")
+    ?.filter((el) => !!el)
+    .map((word, i) =>
+      !i
+        ? word.toLowerCase()
+        : word?.at(0)?.toUpperCase() + word?.slice(1)?.toLowerCase()
+    )
+    .join("");

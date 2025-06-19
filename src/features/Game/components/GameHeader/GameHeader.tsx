@@ -6,11 +6,8 @@ import Txt from "@/shared/components/Txt/Txt";
 import Btn from "@/shared/components/buttons/Btn/Btn";
 import { useDispatch } from "react-redux";
 import { mobilePopSlice } from "../../slices/mobilePopSlice";
-import MobilePop from "../MobilePop/MobilePop";
 
-type PropsType = {};
-
-const GameHeader: FC<PropsType> = ({}) => {
+const GameHeader: FC = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -19,23 +16,23 @@ const GameHeader: FC<PropsType> = ({}) => {
 
   return (
     <GameHeaderStyled className="fixed flex justify-between">
-      <MobilePop />
-
       <Txt
         {...{
           txt: "memory",
-          $clr: "var(--green_3)",
+          $clr: "var(--green__3)",
           $fsz: "var(--btn__md)",
           $fsz_md: "var(--h__lg)",
         }}
       />
 
-      <div className="h-[40px] w-[78px]">
+      <div className="flex w-fit">
         <Btn
           {...{
             label: "Menu",
-            $bg: "var(--green_app)",
+            $bg: "var(--green__app)",
             $fsz: "var(--h__xs)",
+            $clrTxt: "var(--white__1)",
+            $pad: "10px 18px",
             handleClick,
           }}
         />

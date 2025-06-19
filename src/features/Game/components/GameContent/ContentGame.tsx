@@ -2,10 +2,14 @@
 
 import type { FC } from "react";
 import { GameContentStyled } from "./Styled";
+import { store } from "@/core/store";
+import { __cg } from "@/core/lib/log";
 
-type PropsType = {};
+const GameContent: FC = () => {
+  const state = store.getState();
 
-const GameContent: FC<PropsType> = ({}) => {
+  __cg("stateRtk", state);
+
   return <GameContentStyled></GameContentStyled>;
 };
 

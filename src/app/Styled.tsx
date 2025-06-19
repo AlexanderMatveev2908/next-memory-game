@@ -1,10 +1,8 @@
-"use client";
-
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
 export const HomeStyled = styled.div`
-  background: var(--green_3);
+  background: var(--green__3);
 
   .cont {
     gap: 48px;

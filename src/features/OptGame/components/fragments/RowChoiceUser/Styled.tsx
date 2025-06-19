@@ -1,5 +1,3 @@
-"use client";
-
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 
@@ -9,7 +7,7 @@ export const RowChoiceStyled = styled.div`
   .label {
     font-size: var(--h__xs);
     font-weight: 700;
-    color: var(--green_4);
+    color: var(--green__4);
   }
 
   .row_btns {
@@ -17,7 +15,7 @@ export const RowChoiceStyled = styled.div`
   }
 
   .wrap__choice_btn {
-    height: 40px;
+    /* height: 40px; */
   }
 
   ${resp("md")} {
@@ -32,7 +30,7 @@ export const RowChoiceStyled = styled.div`
     }
 
     .wrap__choice_btn {
-      height: 52px;
+      /* height: 52px; */
     }
   }
 `;

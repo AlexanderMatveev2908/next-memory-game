@@ -1,13 +1,12 @@
-"use client";
-
 import { resp } from "@/core/lib/style";
 import styled from "styled-components";
 import { PropsTypeBtnChoice } from "./Btn";
 
 export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   cursor: pointer;
-  background: ${({ $bg }) => $bg ?? "var(--green_app)"};
+  background: ${({ $bg }) => $bg ?? "var(--green__app)"};
   border-radius: 26px;
+  padding: ${({ $pad }) => $pad ?? "0"};
 
   &:disabled {
     cursor: default;
@@ -20,15 +19,17 @@ export const BtnStyled = styled.button<Omit<PropsTypeBtnChoice, "label">>`
   }
 
   span {
-    color: var(--white_1);
+    color: ${({ $clrTxt }) => $clrTxt ?? "var(--white__1)"};
     font-size: ${({ $fsz }) => $fsz ?? "var(--btn__xs)"};
     font-weight: 700;
   }
 
   ${resp("md")} {
     border-radius: 40px;
+    padding: ${({ $padMd, $pad }) => $padMd ?? $pad};
+
     span {
-      font-size: ${({ $fsz_md }) => $fsz_md ?? "var(--btn__md)"};
+      font-size: ${({ $fsz_md, $fsz }) => $fsz_md ?? $fsz};
     }
   }
 `;

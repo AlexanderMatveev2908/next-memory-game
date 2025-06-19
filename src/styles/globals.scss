@@ -32,16 +32,16 @@ $green-colors: (#d8e1de, #bcd9d1, #97bdb8, #36695f, #143b37);
 $white-colors: (#ffffff, #f6f6f6);
 
 :root {
-  --green_app: #03a8a0;
+  --green__app: #03a8a0;
 
   @for $i from 1 through list.length($green-colors) {
     $val: list.nth($green-colors, $i);
-    --green_#{($i - 1)}: #{$val};
+    --green__#{($i - 1)}: #{$val};
   }
 
   @for $i from 1 through list.length($white-colors) {
     $val: list.nth($white-colors, $i);
-    --white_#{($i - 1)}: #{$val};
+    --white__#{($i - 1)}: #{$val};
   }
 }
 
