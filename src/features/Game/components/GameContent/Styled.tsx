@@ -20,11 +20,11 @@ export const GameContentStyled = styled.div<PropsType>`
   }
 
   ${resp("md")} {
-    gap: ${({ $gridSize }) => ($gridSize === "4" ? "24px" : "8px")};
+    gap: ${({ $gridSize }) => ($gridSize === "4" ? "24px" : "16px")};
 
     .cell {
-      width: ${({ $gridSize }) => ($gridSize === "4" ? "118px" : "47px")};
-      height: ${({ $gridSize }) => ($gridSize === "4" ? "118px" : "47px")};
+      width: ${({ $gridSize }) => ($gridSize === "4" ? "118px" : "82px")};
+      height: ${({ $gridSize }) => ($gridSize === "4" ? "118px" : "82px")};
     }
   }
 `;

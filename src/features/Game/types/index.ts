@@ -26,7 +26,7 @@ export const GameNumberType4x4 = Array.from(
 );
 
 export const GameNumberType6x6 = Array.from(
-  { length: 12 },
+  { length: 18 },
   (_, i) => i + 1 + ""
 );
 
