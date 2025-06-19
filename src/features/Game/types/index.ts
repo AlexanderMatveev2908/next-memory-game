@@ -53,7 +53,7 @@ export const GameNumberType6x6 = Array.from(
   (_, i) => i + 1 + ""
 );
 
-type GameCellStatusType = "hidden" | "visible" | "matched";
+export type GameCellStatusType = "hidden" | "currFlipped" | "matched";
 
 export type CellGameValType =
   // | keyof typeof GameIconsType

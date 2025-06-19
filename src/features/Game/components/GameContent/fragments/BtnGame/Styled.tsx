@@ -4,9 +4,13 @@ import styled from "styled-components";
 type PropsType = {
   $fsz?: string;
   $fsz_md?: string;
+  $bg: string;
 };
 
 export const BtnGameStyled = styled.button<PropsType>`
+  background: ${({ $bg }) => $bg};
+  border-radius: 60px;
+
   .label {
     font-size: ${({ $fsz }) => $fsz};
     font-weight: 700;

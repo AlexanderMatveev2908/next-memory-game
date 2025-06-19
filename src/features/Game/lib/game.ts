@@ -5,7 +5,12 @@ export const handleStorageMove = (state: StateGameType, c: GameCellType) => {
   if (!Array.isArray(state.currFlipped)) state.currFlipped = [c];
   else (state.currFlipped as GameCellType[]).push(c);
 
-  if (state.currFlipped.length > 1) {
+  const currIDs = new Set(state.currFlipped.map((el) => el.id));
+  state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
+    currIDs.has(cell.id) ? { ...cell, type: "currFlipped" } : cell
+  );
+
+  if (state.currFlipped.length === 2) {
     state.moves++;
 
     const isMatch = state.currFlipped[0]!.val === state.currFlipped[1]!.val;

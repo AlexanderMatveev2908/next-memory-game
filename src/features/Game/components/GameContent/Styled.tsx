@@ -13,8 +13,6 @@ export const GameContentStyled = styled.div<PropsType>`
   max-width: fit-content;
 
   .cell {
-    background: var(--green__3);
-    border-radius: 60px;
     width: ${({ $gridSize }) => ($gridSize === "4" ? "74px" : "47px")};
     height: ${({ $gridSize }) => ($gridSize === "4" ? "74px" : "47px")};
   }
