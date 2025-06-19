@@ -8,10 +8,13 @@ export type OptGameStateType = {
   gridSize: GridSizeType | null;
 };
 
-export const initStateOptGame: OptGameStateType = getStorage("optGame") ?? {
+const defState = {
   theme: null,
   gridSize: null,
 };
+
+export const initStateOptGame: OptGameStateType =
+  getStorage("optGame") ?? defState;
 
 export const optGameSlice = createSlice({
   name: "optGame",
@@ -20,8 +23,8 @@ export const optGameSlice = createSlice({
     setOpt: (
       state,
       action: PayloadAction<{
-        theme: ThemeType | null;
-        gridSize: GridSizeType | null;
+        theme: ThemeType;
+        gridSize: GridSizeType;
       }>
     ) => {
       const { theme, gridSize } = action.payload;
@@ -29,6 +32,8 @@ export const optGameSlice = createSlice({
       state.theme = theme;
       state.gridSize = gridSize;
     },
+
+    resetOpt: () => defState,
   },
 });
 

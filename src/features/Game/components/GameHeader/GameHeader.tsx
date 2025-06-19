@@ -6,7 +6,6 @@ import Txt from "@/shared/components/Txt/Txt";
 import Btn from "@/shared/components/buttons/Btn/Btn";
 import { useDispatch } from "react-redux";
 import { mobilePopSlice } from "../../slices/mobilePopSlice";
-import MobilePop from "../MobilePop/MobilePop";
 
 const GameHeader: FC = () => {
   const dispatch = useDispatch();
@@ -17,8 +16,6 @@ const GameHeader: FC = () => {
 
   return (
     <GameHeaderStyled className="fixed flex justify-between">
-      <MobilePop />
-
       <Txt
         {...{
           txt: "memory",

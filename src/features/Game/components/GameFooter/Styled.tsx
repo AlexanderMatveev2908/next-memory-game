@@ -5,6 +5,7 @@ export const GameFooterStyled = styled.div`
   left: 24px;
   right: 24px;
   bottom: 24px;
+  z-index: 100;
 
   display: flex;
   justify-content: center;

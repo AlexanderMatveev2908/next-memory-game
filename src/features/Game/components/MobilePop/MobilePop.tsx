@@ -10,6 +10,7 @@ import Btn from "@/shared/components/buttons/Btn/Btn";
 import { optGameSlice } from "@/features/OptGame/slices/optGameSlice";
 import { useRouter } from "next/navigation";
 import { delStorage } from "@/core/lib/storage";
+import { gameSlice } from "../../slices/gameSlice";
 
 const MobilePop: FC = () => {
   const popState = useSelector(getMobilePopState);
@@ -23,17 +24,15 @@ const MobilePop: FC = () => {
         console.log("TODO ☢️");
       },
       newGame: () => {
-        dispatch(
-          optGameSlice.actions.setOpt({
-            theme: null,
-            gridSize: null,
-          }),
-          delStorage("optGame"),
+        dispatch(optGameSlice.actions.resetOpt());
+        delStorage("optGame");
 
-          dispatch(mobilePopSlice.actions.setIsPop(false)),
+        dispatch(gameSlice.actions.resetGame());
+        delStorage("game");
 
-          nav.replace("/")
-        );
+        dispatch(mobilePopSlice.actions.setIsPop(false));
+
+        nav.replace("/");
       },
       resumeGame: () => dispatch(mobilePopSlice.actions.setIsPop(false)),
     }),

@@ -8,6 +8,7 @@ import GameFooter from "@/features/Game/components/GameFooter/GameFooter";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
+import MobilePop from "@/features/Game/components/MobilePop/MobilePop";
 
 const Game: FC = () => {
   const optGame = useSelector(getOptGameState);
@@ -20,6 +21,8 @@ const Game: FC = () => {
 
   return (
     <GameStyled className="w-full grid grid-cols-1 justify-items-center items-center">
+      <MobilePop />
+
       <GameHeader />
       <GameContent />
       <GameFooter />

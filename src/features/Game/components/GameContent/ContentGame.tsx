@@ -2,13 +2,13 @@
 
 import type { FC } from "react";
 import { GameContentStyled } from "./Styled";
-import { useSelector } from "react-redux";
-import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
+import { store } from "@/core/store";
+import { __cg } from "@/core/lib/log";
 
 const GameContent: FC = () => {
-  const optGame = useSelector(getOptGameState);
+  const state = store.getState();
 
-  console.log(optGame);
+  __cg("stateRtk", state);
 
   return <GameContentStyled></GameContentStyled>;
 };

@@ -1,3 +1,5 @@
+import { pickRandom } from "@/core/lib/etc";
+
 export enum GameIconsType {
   ANCHOR = "ANCHOR",
   BUG = "BUG",
@@ -11,6 +13,13 @@ export enum GameIconsType {
   SUN = "SUN",
 }
 
+export const GameIconsType4x4 = Object.values(GameIconsType).slice(0, 8);
+
+const arrIcons6x6 = Object.values(GameIconsType);
+export const GameIconsType6x6 = arrIcons6x6
+  .slice(0)
+  .concat(Array.from({ length: 2 }, () => pickRandom(arrIcons6x6)));
+
 export const GameNumberType4x4 = Array.from(
   { length: 8 },
   (_, i) => i + 1 + ""
@@ -20,3 +29,18 @@ export const GameNumberType6x6 = Array.from(
   { length: 12 },
   (_, i) => i + 1 + ""
 );
+
+type GameCellStatusType = "hidden" | "visible" | "matched";
+
+export type CellGameValType =
+  // | keyof typeof GameIconsType
+  | keyof (typeof GameIconsType4x4)[number]
+  | keyof (typeof GameIconsType6x6)[number]
+  | keyof (typeof GameNumberType4x4)[number]
+  | keyof (typeof GameNumberType6x6)[number];
+
+export type GameCellType = {
+  id: string;
+  val: CellGameValType;
+  type: GameCellStatusType;
+};

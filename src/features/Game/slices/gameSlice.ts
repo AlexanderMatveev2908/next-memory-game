@@ -1,18 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { GameIconsType, GameNumberType4x4, GameNumberType6x6 } from "../types";
-
-type GameCellStatusType = "hidden" | "visible" | "matched";
-
-type CellGameValType =
-  | keyof typeof GameIconsType
-  | keyof (typeof GameNumberType4x4)[number]
-  | keyof (typeof GameNumberType6x6)[number];
-
-type GameCellType = {
-  id: string;
-  val: CellGameValType;
-  type: GameCellStatusType;
-};
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { GameCellType } from "../types";
+import { getStorage } from "@/core/lib/storage";
 
 type StateGameType = {
   timer: {
@@ -23,7 +11,7 @@ type StateGameType = {
   gameBoard: GameCellType[] | null;
 };
 
-const initState: StateGameType = {
+const defState = {
   timer: {
     run: false,
     counter: 0,
@@ -32,8 +20,35 @@ const initState: StateGameType = {
   gameBoard: null,
 };
 
+const initState: StateGameType = getStorage("game") ?? defState;
+
 export const gameSlice = createSlice({
   name: "game",
   initialState: initState,
-  reducers: {},
+  reducers: {
+    initGame: (state, action: PayloadAction<{ gameBoard: GameCellType[] }>) => {
+      state.gameBoard = action.payload.gameBoard;
+      state.timer = {
+        run: true,
+        counter: 0,
+      };
+    },
+
+    resetGame: () => defState,
+  },
+  // extraReducers: (builder) =>
+  //   builder.addCase(
+  //     optGameSlice.actions.setOpt,
+  //     (
+  //       state,
+  //       action: PayloadAction<{
+  //         theme: ThemeType;
+  //         gridSize: GridSizeType;
+  //       }>
+  //     ) => {
+  //       const { theme, gridSize } = action.payload;
+
+  //       state.gameBoard = initGame({ theme, gridSize });
+  //     }
+  //   ),
 });

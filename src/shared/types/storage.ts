@@ -1,1 +1,1 @@
-export type StorageKey = "optGame" | "gameCount";
+export type StorageKey = "optGame" | "game";
