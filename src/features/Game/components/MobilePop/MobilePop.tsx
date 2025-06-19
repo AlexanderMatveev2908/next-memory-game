@@ -7,16 +7,14 @@ import WrapPop from "@/shared/components/wrappers/WrapPop/WrapPop";
 import { getMobilePopState, mobilePopSlice } from "../../slices/mobilePopSlice";
 import { mobileBtns } from "./uiFactory/mobileBtns";
 import Btn from "@/shared/components/buttons/Btn/Btn";
-import { optGameSlice } from "@/features/OptGame/slices/optGameSlice";
-import { useRouter } from "next/navigation";
-import { delStorage } from "@/core/lib/storage";
-import { gameSlice } from "../../slices/gameSlice";
+import { useNewGame } from "../../hooks/useNewGame";
 
 const MobilePop: FC = () => {
   const popState = useSelector(getMobilePopState);
 
   const dispatch = useDispatch();
-  const nav = useRouter();
+
+  const { startNewGame } = useNewGame();
 
   const handlers = useMemo(
     () => ({
@@ -24,21 +22,13 @@ const MobilePop: FC = () => {
         console.log("TODO ☢️");
       },
       newGame: () => {
-        dispatch(optGameSlice.actions.resetOpt());
-        delStorage("optGame");
-
-        dispatch(gameSlice.actions.resetGame());
-        delStorage("game");
-
-        dispatch(mobilePopSlice.actions.setIsPop(false));
-
-        nav.replace("/");
+        startNewGame();
       },
       resumeGame: () => {
         dispatch(mobilePopSlice.actions.setIsPop(false));
       },
     }),
-    [dispatch, nav]
+    [dispatch, startNewGame]
   );
 
   return (
