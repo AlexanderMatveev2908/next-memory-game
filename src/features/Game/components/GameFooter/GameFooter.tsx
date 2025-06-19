@@ -6,6 +6,7 @@ import CounterBox from "@/shared/components/CounterBox/CounterBox";
 import { useGenIDs } from "@/core/hooks/useGenIDs";
 import { useSelector } from "react-redux";
 import { getGameState } from "../../slices/gameSlice";
+import { formatTime } from "@/core/lib/formatters";
 
 const GameFooter: FC = () => {
   const gameState = useSelector(getGameState);
@@ -25,6 +26,8 @@ const GameFooter: FC = () => {
     ],
     [gameState.moves, gameState.timer.counter]
   );
+
+  console.log(formatTime(5000));
 
   return (
     <GameFooterStyled className="fixed">

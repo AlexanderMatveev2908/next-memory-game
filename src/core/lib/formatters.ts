@@ -25,3 +25,16 @@ export const chainCmlCase = (str?: string) =>
         : word?.at(0)?.toUpperCase() + word?.slice(1)?.toLowerCase()
     )
     .join("");
+
+export const formatTime = (sec: number): string => {
+  const hrs = Math.floor(sec / 3600);
+  const mins = Math.floor((sec % 3600) / 60);
+  const secs = Math.floor(sec % 60);
+
+  return [hrs, mins, secs]
+    .filter((val, i) => (i ? true : !!val))
+    .map((val, i, arg) =>
+      (val + "").padStart(i === arg.length - 1 ? 2 : 1, "0")
+    )
+    .join(":");
+};
