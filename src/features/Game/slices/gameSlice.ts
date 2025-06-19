@@ -3,6 +3,8 @@ import { GameCellType } from "../types";
 import { getStorage } from "@/core/lib/storage";
 import { RootStateType } from "@/core/store";
 import { mobilePopSlice } from "./mobilePopSlice";
+import { handleFlipBack, handleMove } from "../lib/game";
+import { gamePopSlice } from "./gamePopSlice";
 
 export type StateGameType = {
   timer: {
@@ -49,52 +51,27 @@ export const gameSlice = createSlice({
     },
 
     makeMove: (state, action: PayloadAction<GameCellType>) => {
-      if (!Array.isArray(state.currFlipped))
-        state.currFlipped = [action.payload];
-      else (state.currFlipped as GameCellType[]).push(action.payload);
-
-      const currIDs = new Set(state.currFlipped.map((el) => el.id));
-      state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
-        currIDs.has(cell.id) ? { ...cell, type: "currFlipped" } : cell
-      );
-
-      if (state.currFlipped.length === 2) {
-        state.moves++;
-
-        const isMatch = state.currFlipped[0]!.val === state.currFlipped[1]!.val;
-
-        if (isMatch) {
-          const ids = new Set(state.currFlipped.map((el) => el.id));
-
-          state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
-            ids.has(cell.id) ? { ...cell, type: "matched" } : cell
-          );
-
-          state.currFlipped = null;
-        } else {
-          state.flipBack = true;
-        }
-      }
+      handleMove(state, action.payload);
     },
 
     resetCurrFlipped: (state) => {
-      const IDs = new Set(state.currFlipped!.map((el) => el.id));
-      state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
-        IDs.has(cell.id) ? { ...cell, type: "hidden" } : cell
-      );
-      state.currFlipped = null;
-      state.flipBack = false;
+      handleFlipBack(state);
     },
 
     resetGame: () => defStateGame,
   },
-  extraReducers: (builder) =>
-    builder.addCase(
-      mobilePopSlice.actions.setIsPop,
-      (state, action: PayloadAction<boolean>) => {
-        state.timer.run = !action.payload;
-      }
-    ),
+  extraReducers: (builder) => {
+    builder
+      .addCase(
+        mobilePopSlice.actions.setIsPop,
+        (state, action: PayloadAction<boolean>) => {
+          state.timer.run = !action.payload;
+        }
+      )
+      .addCase(gamePopSlice.actions.setPop, (state) => {
+        state.timer.run = false;
+      });
+  },
   // extraReducers: (builder) =>
   //   builder.addCase(
   //     optGameSlice.actions.setOpt,

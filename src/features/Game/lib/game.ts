@@ -1,49 +1,47 @@
-import { cpyObj } from "@/core/lib/dataStructure";
 import { StateGameType } from "../slices/gameSlice";
 import { GameCellType } from "../types";
-import { saveStorage } from "@/core/lib/storage";
 
-export const handleStorageMove = (state: StateGameType, c: GameCellType) => {
-  const cpy = cpyObj(state);
+export const handleMove = (
+  state: StateGameType,
+  c: GameCellType,
+  returnState?: boolean
+) => {
+  if (!Array.isArray(state.currFlipped)) state.currFlipped = [c];
+  else (state.currFlipped as GameCellType[]).push(c);
 
-  if (!Array.isArray(cpy.currFlipped)) cpy.currFlipped = [c];
-  else (cpy.currFlipped as GameCellType[]).push(c);
-
-  const currIDs = new Set(cpy.currFlipped.map((el) => el.id));
-  cpy.gameBoard = cpy.gameBoard!.map((cell: GameCellType) =>
+  const currIDs = new Set(state.currFlipped.map((el) => el.id));
+  state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
     currIDs.has(cell.id) ? { ...cell, type: "currFlipped" } : cell
   );
 
-  if (cpy.currFlipped.length === 2) {
-    cpy.moves++;
+  if (state.currFlipped.length === 2) {
+    state.moves++;
 
-    const isMatch = cpy.currFlipped[0]!.val === cpy.currFlipped[1]!.val;
+    const isMatch = state.currFlipped[0]!.val === state.currFlipped[1]!.val;
 
     if (isMatch) {
-      const ids = new Set(cpy.currFlipped.map((el) => el.id));
+      const ids = new Set(state.currFlipped.map((el) => el.id));
 
-      cpy.gameBoard = cpy.gameBoard!.map((cell: GameCellType) =>
+      state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
         ids.has(cell.id) ? { ...cell, type: "matched" } : cell
       );
 
-      cpy.currFlipped = null;
+      state.currFlipped = null;
     } else {
-      cpy.flipBack = true;
+      state.flipBack = true;
     }
   }
 
-  saveStorage("game", cpy);
+  return returnState ? state : null;
 };
 
-export const flipBackStorage = (state: StateGameType) => {
-  const cpy = cpyObj(state);
-
-  const IDs = new Set(cpy.currFlipped!.map((el) => el.id));
-  cpy.gameBoard = cpy.gameBoard!.map((cell: GameCellType) =>
+export const handleFlipBack = (state: StateGameType, returnState?: boolean) => {
+  const IDs = new Set(state.currFlipped!.map((el) => el.id));
+  state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
     IDs.has(cell.id) ? { ...cell, type: "hidden" } : cell
   );
-  cpy.currFlipped = null;
-  cpy.flipBack = false;
+  state.currFlipped = null;
+  state.flipBack = false;
 
-  saveStorage("game", cpy);
+  return returnState ? state : null;
 };

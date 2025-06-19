@@ -11,11 +11,13 @@ type PropsType = {
   c: GameCellType;
   optGame: OptGameStateType;
   handleClick: () => void;
+  isDisabled: boolean;
 };
 
-const BtnGame: FC<PropsType> = ({ c, handleClick, optGame }) => {
+const BtnGame: FC<PropsType> = ({ c, handleClick, optGame, isDisabled }) => {
   return (
     <BtnGameStyled
+      disabled={isDisabled}
       onClick={handleClick}
       {...{ ...getFszBtns(optGame), $bg: getBgBtn(c.type) }}
       className="w-full h-full flex justify-center items-center"
