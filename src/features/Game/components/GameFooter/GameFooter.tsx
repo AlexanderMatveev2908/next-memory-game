@@ -10,7 +10,7 @@ import { formatTime } from "@/core/lib/formatters";
 import { clearT } from "@/core/lib/etc";
 import { saveStorage } from "@/core/lib/storage";
 import { cpyObj } from "@/core/lib/dataStructure";
-import ClientWrap from "@/shared/components/wrappers/ClientWrap/Hydrated";
+import WrapClient from "@/shared/components/wrappers/WrapClient/WrapClient";
 
 const GameFooter: FC = () => {
   const timerID = useRef<NodeJS.Timeout | null>(null);
@@ -51,7 +51,7 @@ const GameFooter: FC = () => {
   }, [gameState.timer.run, dispatch, gameState]);
 
   return (
-    <ClientWrap>
+    <WrapClient>
       <GameFooterStyled className="fixed">
         <div className="wrapper">
           {pairsVals.map((el, i) => (
@@ -61,7 +61,7 @@ const GameFooter: FC = () => {
           ))}
         </div>
       </GameFooterStyled>
-    </ClientWrap>
+    </WrapClient>
   );
 };
 

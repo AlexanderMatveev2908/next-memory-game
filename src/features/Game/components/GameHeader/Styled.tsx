@@ -16,6 +16,9 @@ export const GameHeaderStyled = styled.div`
   }
 
   ${resp("lg")} {
+    top: 67px;
+    left: 165px;
+    right: 165px;
     max-width: 1100px;
   }
 `;

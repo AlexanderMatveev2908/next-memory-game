@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
 import MobilePop from "@/features/Game/components/MobilePop/MobilePop";
+import GamePop from "@/features/Game/components/GamePop/GamePop";
+import { useMobile } from "@/core/hooks/useMobile";
 
 const Game: FC = () => {
   const optGame = useSelector(getOptGameState);
@@ -19,9 +21,12 @@ const Game: FC = () => {
       nav.replace("/");
   }, [optGame, nav]);
 
+  const { isMobile } = useMobile();
+
   return (
     <GameStyled className="w-full grid grid-cols-1 place-content-center justify-items-center">
-      <MobilePop />
+      {isMobile && <MobilePop />}
+      <GamePop />
 
       <GameHeader />
       <GameContent />
