@@ -6,7 +6,7 @@ import WrapPop from "@/shared/components/wrappers/WrapPop/WrapPop";
 import { useSelector } from "react-redux";
 import { getGamePopState } from "../../slices/gamePopSlice";
 import Txt from "@/shared/components/Txt/Txt";
-import { gamePopBtns, rowsCountersPop } from "./uiFactory";
+import { gamePopBtns, rowsCountersPop } from "../../uiFactory";
 import RowCounter from "./fragments/RowCounter/RowCounter";
 import { getGameState } from "../../slices/gameSlice";
 import Btn from "@/shared/components/buttons/Btn/Btn";

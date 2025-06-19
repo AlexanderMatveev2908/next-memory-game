@@ -4,13 +4,15 @@ import { getStorage } from "@/core/lib/storage";
 import { RootStateType } from "@/core/store";
 import { mobilePopSlice } from "./mobilePopSlice";
 
-type StateGameType = {
+export type StateGameType = {
   timer: {
     run: boolean;
     counter: number;
   };
   moves: number;
   gameBoard: GameCellType[] | null;
+  currFlipped: [] | [GameCellType] | [GameCellType, GameCellType] | null;
+  flipBack: boolean;
 };
 
 export const defStateGame = {
@@ -20,6 +22,8 @@ export const defStateGame = {
   },
   moves: 0,
   gameBoard: null,
+  currFlipped: null,
+  flipBack: false,
 };
 
 const initState: StateGameType = getStorage("game") ?? defStateGame;
@@ -42,6 +46,35 @@ export const gameSlice = createSlice({
 
     setTimerMode: (state, action: PayloadAction<boolean>) => {
       state.timer.run = action.payload;
+    },
+
+    makeMove: (state, action: PayloadAction<GameCellType>) => {
+      if (!Array.isArray(state.currFlipped))
+        state.currFlipped = [action.payload];
+      else (state.currFlipped as GameCellType[]).push(action.payload);
+
+      if (state.currFlipped.length > 1) {
+        state.moves++;
+
+        const isMatch = state.currFlipped[0]!.val === state.currFlipped[1]!.val;
+
+        if (isMatch) {
+          const ids = new Set(state.currFlipped.map((el) => el.id));
+
+          state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
+            ids.has(cell.id) ? { ...cell, type: "matched" } : cell
+          );
+
+          state.currFlipped = null;
+        } else {
+          state.flipBack = true;
+        }
+      }
+    },
+
+    resetCurrFlipped: (state) => {
+      state.currFlipped = null;
+      state.flipBack = false;
     },
 
     resetGame: () => defStateGame,

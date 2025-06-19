@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type FC } from "react";
+import { type FC } from "react";
 import { GameHeaderStyled } from "./Styled";
 import Txt from "@/shared/components/Txt/Txt";
 import Btn from "@/shared/components/buttons/Btn/Btn";
@@ -9,7 +9,6 @@ import { mobilePopSlice } from "../../slices/mobilePopSlice";
 import WrapClient from "@/shared/components/wrappers/WrapClient/WrapClient";
 import { useNewGame } from "../../hooks/useNewGame";
 import { useMobile } from "@/core/hooks/useMobile";
-import { gamePopSlice } from "../../slices/gamePopSlice";
 
 const GameHeader: FC = () => {
   const { isMobile } = useMobile();
@@ -20,10 +19,6 @@ const GameHeader: FC = () => {
   const handleClick = () => {
     dispatch(mobilePopSlice.actions.setIsPop(true));
   };
-
-  useEffect(() => {
-    dispatch(gamePopSlice.actions.setPop(true));
-  }, [dispatch]);
 
   return (
     <WrapClient>

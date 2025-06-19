@@ -1,4 +1,15 @@
 import { pickRandom } from "@/core/lib/etc";
+import {
+  Anchor,
+  Bug,
+  Car,
+  Football,
+  HandSpock,
+  LiraSign,
+  Moon,
+  Snowflake,
+  Sun,
+} from "@/shared/SVGs";
 
 export enum GameIconsType {
   ANCHOR = "ANCHOR",
@@ -13,12 +24,24 @@ export enum GameIconsType {
   SUN = "SUN",
 }
 
+export const objSVGs = {
+  [GameIconsType.ANCHOR]: Anchor,
+  [GameIconsType.BUG]: Bug,
+  [GameIconsType.CAR]: Car,
+  [GameIconsType.FOOTBALL]: Football,
+  [GameIconsType.HAND_SPOCK]: HandSpock,
+  [GameIconsType.LIRA_SIGN]: LiraSign,
+  [GameIconsType.MOON]: Moon,
+  [GameIconsType.SNOWFLAKE]: Snowflake,
+  [GameIconsType.SUN]: Sun,
+};
+
 export const GameIconsType4x4 = Object.values(GameIconsType).slice(0, 8);
 
 const arrIcons6x6 = Object.values(GameIconsType);
 export const GameIconsType6x6 = arrIcons6x6
   .slice(0)
-  .concat(Array.from({ length: 2 }, () => pickRandom(arrIcons6x6)));
+  .concat(Array.from({ length: 8 }, () => pickRandom(arrIcons6x6)));
 
 export const GameNumberType4x4 = Array.from(
   { length: 8 },

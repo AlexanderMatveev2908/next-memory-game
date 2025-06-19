@@ -6,6 +6,7 @@
   --h__lg: 32px;
   --h__xl: 40px;
   --h__2xl: 48px;
+  --h__3xl: 56px;
   --btn__sm: 20px;
   --btn__md: 26px;
   --btn__lg: 32px;
@@ -48,6 +49,13 @@
 
 .txt_h__2xl {
   font-size: var(--h__2xl);
+  line-height: 125%;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.txt_h__3xl {
+  font-size: var(--h__3xl);
   line-height: 125%;
   letter-spacing: 0;
   font-weight: 700;
