@@ -4,6 +4,7 @@ import { getStorage } from "@/core/lib/storage";
 import { RootStateType } from "@/core/store";
 import { mobilePopSlice } from "./mobilePopSlice";
 import { handleFlipBack, handleMove } from "../lib/game";
+import { gamePopSlice } from "./gamePopSlice";
 
 export type StateGameType = {
   timer: {
@@ -59,13 +60,18 @@ export const gameSlice = createSlice({
 
     resetGame: () => defStateGame,
   },
-  extraReducers: (builder) =>
-    builder.addCase(
-      mobilePopSlice.actions.setIsPop,
-      (state, action: PayloadAction<boolean>) => {
-        state.timer.run = !action.payload;
-      }
-    ),
+  extraReducers: (builder) => {
+    builder
+      .addCase(
+        mobilePopSlice.actions.setIsPop,
+        (state, action: PayloadAction<boolean>) => {
+          state.timer.run = !action.payload;
+        }
+      )
+      .addCase(gamePopSlice.actions.setPop, (state) => {
+        state.timer.run = false;
+      });
+  },
   // extraReducers: (builder) =>
   //   builder.addCase(
   //     optGameSlice.actions.setOpt,

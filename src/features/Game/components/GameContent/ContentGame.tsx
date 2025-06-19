@@ -12,6 +12,7 @@ import { GameCellType } from "../../types";
 import { useFlipBack } from "../../hooks/useFlipBack";
 import { handleMove } from "../../lib/game";
 import { saveStorage } from "@/core/lib/storage";
+import { useListenEnd } from "../../hooks/useListenEnd";
 
 const GameContent: FC = () => {
   const gameState = useSelector(getGameState);
@@ -28,6 +29,7 @@ const GameContent: FC = () => {
   };
 
   useFlipBack();
+  useListenEnd();
 
   const isDisabled =
     (gameState.currFlipped?.length ?? 0) >= 2 || gameState.flipBack;

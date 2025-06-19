@@ -26,5 +26,8 @@ export const isObjOK = <T>(obj?: T, cb?: (v: keyof T) => boolean): boolean =>
       : (el) => el !== undefined && el !== "undefined"
   );
 
-export const isArrOK = <T>(arg?: T[] | null): boolean =>
-  Array.isArray(arg) && !!arg.length && arg.every((el) => isObjOK(el));
+export const isArrOK = <T>(
+  arg?: T[] | null,
+  cb?: (v: keyof T) => boolean
+): boolean =>
+  Array.isArray(arg) && !!arg.length && arg.every((el) => isObjOK(el, cb));
