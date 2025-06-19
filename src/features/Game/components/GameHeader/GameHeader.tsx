@@ -1,29 +1,18 @@
 "use client";
 
-import { useEffect, useState, type FC } from "react";
+import { useEffect, type FC } from "react";
 import { GameHeaderStyled } from "./Styled";
 import Txt from "@/shared/components/Txt/Txt";
 import Btn from "@/shared/components/buttons/Btn/Btn";
 import { useDispatch } from "react-redux";
 import { mobilePopSlice } from "../../slices/mobilePopSlice";
-import { getIsMobile } from "@/core/lib/style";
-import ClientWrap from "@/shared/components/wrappers/ClientWrap/Hydrated";
-import { isClient } from "@/core/lib/etc";
+import WrapClient from "@/shared/components/wrappers/WrapClient/WrapClient";
 import { useNewGame } from "../../hooks/useNewGame";
+import { useMobile } from "@/core/hooks/useMobile";
+import { gamePopSlice } from "../../slices/gamePopSlice";
 
 const GameHeader: FC = () => {
-  const [isMobile, setIsMobile] = useState(getIsMobile());
-
-  useEffect(() => {
-    if (!isClient()) return;
-    const listen = () => setIsMobile(getIsMobile());
-
-    window.addEventListener("resize", listen);
-
-    return () => {
-      window.removeEventListener("resize", getIsMobile);
-    };
-  }, []);
+  const { isMobile } = useMobile();
 
   const { startNewGame } = useNewGame();
   const dispatch = useDispatch();
@@ -32,8 +21,12 @@ const GameHeader: FC = () => {
     dispatch(mobilePopSlice.actions.setIsPop(true));
   };
 
+  useEffect(() => {
+    dispatch(gamePopSlice.actions.setPop(true));
+  }, [dispatch]);
+
   return (
-    <ClientWrap>
+    <WrapClient>
       <GameHeaderStyled className="fixed flex justify-between">
         <Txt
           {...{
@@ -87,7 +80,7 @@ const GameHeader: FC = () => {
           </div>
         )}
       </GameHeaderStyled>
-    </ClientWrap>
+    </WrapClient>
   );
 };
 

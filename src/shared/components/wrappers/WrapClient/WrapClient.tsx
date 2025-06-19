@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState, type FC } from "react";
-import { ClientWrapStyled } from "./Styled";
+import { WrapClientStyled } from "./Styled";
 
 type PropsType = {
   children: React.ReactNode;
 };
 
-const ClientWrap: FC<PropsType> = ({ children }) => {
+const WrapClient: FC<PropsType> = ({ children }) => {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
@@ -15,10 +15,10 @@ const ClientWrap: FC<PropsType> = ({ children }) => {
   }, []);
 
   return (
-    <ClientWrapStyled className="w-fit">
+    <WrapClientStyled className="w-fit">
       {isHydrated ? children : null}
-    </ClientWrapStyled>
+    </WrapClientStyled>
   );
 };
 
-export default ClientWrap;
+export default WrapClient;
