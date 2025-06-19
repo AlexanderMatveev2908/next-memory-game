@@ -21,7 +21,7 @@ export const gamePopBtns = [
     label: "Restart",
   },
   {
-    label: "New Game",
+    label: "Setup New Game",
   },
 ].map((el, i) => ({
   ...el,

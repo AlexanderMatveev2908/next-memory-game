@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { isStr } from "./dataStructure";
+import { __cg } from "./log";
+
 export const formatDate = (date: Date | string | number) => {
   const param =
     date instanceof Date
@@ -15,16 +19,25 @@ export const formatDate = (date: Date | string | number) => {
   }).format(param);
 };
 
-export const chainCmlCase = (str?: string) =>
-  str
-    ?.split(" ")
-    ?.filter((el) => !!el)
-    .map((word, i) =>
-      !i
-        ? word.toLowerCase()
-        : word?.at(0)?.toUpperCase() + word?.slice(1)?.toLowerCase()
-    )
-    .join("");
+export const chainCmlCase = (str?: string): string => {
+  try {
+    return !isStr(str)
+      ? ""
+      : (str as string)
+          .split(" ")
+          .filter((el: string) => !!el)
+          .map((word: string, i: number) =>
+            !i
+              ? word.toLowerCase()
+              : word?.at(0)?.toUpperCase() + word?.slice(1)?.toLowerCase()
+          )
+          .join("");
+  } catch (err: any) {
+    __cg("chainCmlCase", err);
+
+    return "";
+  }
+};
 
 const pickPadStyle = (i: number, len: number) => {
   switch (len) {

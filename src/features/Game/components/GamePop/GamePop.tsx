@@ -10,6 +10,7 @@ import { gamePopBtns, rowsCountersPop } from "./uiFactory";
 import RowCounter from "./fragments/RowCounter/RowCounter";
 import { getGameState } from "../../slices/gameSlice";
 import Btn from "@/shared/components/buttons/Btn/Btn";
+import { useNewGame } from "../../hooks/useNewGame";
 
 const GamePop: FC = ({}) => {
   const gamePopState = useSelector(getGamePopState);
@@ -19,6 +20,13 @@ const GamePop: FC = ({}) => {
     () => rowsCountersPop(gameState.timer.counter, gameState.moves),
     [gameState.moves, gameState.timer.counter]
   );
+
+  const { startNewGame } = useNewGame();
+
+  const handlers = new Map([
+    ["restart", () => console.log("TO DO ☢️")],
+    ["setupNewGame", startNewGame],
+  ]);
 
   return (
     <WrapPop {...{ isChildPop: gamePopState.isPop }}>
@@ -59,6 +67,7 @@ const GamePop: FC = ({}) => {
                   $clrTxt: el.$clrTxt,
                   $fsz: "var(--h__sm)",
                   $fsz_md: "var(--h__md)",
+                  handleClick: handlers.get(el.handler),
                 }}
               />
             </div>
