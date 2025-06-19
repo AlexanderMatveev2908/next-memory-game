@@ -78,6 +78,10 @@ export const gameSlice = createSlice({
     },
 
     resetCurrFlipped: (state) => {
+      const IDs = new Set(state.currFlipped!.map((el) => el.id));
+      state.gameBoard = state.gameBoard!.map((cell: GameCellType) =>
+        IDs.has(cell.id) ? { ...cell, type: "hidden" } : cell
+      );
       state.currFlipped = null;
       state.flipBack = false;
     },
