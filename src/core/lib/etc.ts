@@ -9,3 +9,5 @@ export const clearT = (timerID: RefObject<NodeJS.Timeout | null>) => {
     timerID.current = null;
   }
 };
+
+export const isClient = () => typeof window !== "undefined";
