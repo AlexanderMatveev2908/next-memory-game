@@ -34,7 +34,9 @@ const MobilePop: FC = () => {
 
         nav.replace("/");
       },
-      resumeGame: () => dispatch(mobilePopSlice.actions.setIsPop(false)),
+      resumeGame: () => {
+        dispatch(mobilePopSlice.actions.setIsPop(false));
+      },
     }),
     [dispatch, nav]
   );

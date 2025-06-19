@@ -47,7 +47,7 @@ const CardForm: FC = () => {
       dispatch(gameSlice.actions.initGame({ gameBoard }));
       saveStorage("game", {
         gameBoard,
-        timer: { run: true, count: 0 },
+        timer: { run: true, counter: 0 },
         moves: 0,
       });
     },
