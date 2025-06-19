@@ -14,7 +14,11 @@ const ClientWrap: FC<PropsType> = ({ children }) => {
     setIsHydrated(true);
   }, []);
 
-  return <ClientWrapStyled>{isHydrated ? children : null}</ClientWrapStyled>;
+  return (
+    <ClientWrapStyled className="w-fit">
+      {isHydrated ? children : null}
+    </ClientWrapStyled>
+  );
 };
 
 export default ClientWrap;

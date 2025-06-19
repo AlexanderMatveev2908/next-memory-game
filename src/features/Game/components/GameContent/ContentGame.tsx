@@ -2,15 +2,29 @@
 
 import type { FC } from "react";
 import { GameContentStyled } from "./Styled";
-import { store } from "@/core/store";
-import { __cg } from "@/core/lib/log";
+import { useSelector } from "react-redux";
+import { getGameState } from "../../slices/gameSlice";
+import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
+import { isArrOK } from "@/core/lib/dataStructure";
+import ClientWrap from "@/shared/components/wrappers/ClientWrap/Hydrated";
 
 const GameContent: FC = () => {
-  const state = store.getState();
+  const gameState = useSelector(getGameState);
+  const optGame = useSelector(getOptGameState);
 
-  __cg("stateRtk", state);
-
-  return <GameContentStyled></GameContentStyled>;
+  return (
+    <ClientWrap>
+      <GameContentStyled
+        className="grid w-full"
+        {...{ $gridSize: optGame.gridSize?.split("x")?.[0] ?? "4" }}
+      >
+        {isArrOK(gameState.gameBoard) &&
+          gameState!.gameBoard!.map((cell) => (
+            <div key={cell.id} className="cell"></div>
+          ))}
+      </GameContentStyled>
+    </ClientWrap>
+  );
 };
 
 export default GameContent;
