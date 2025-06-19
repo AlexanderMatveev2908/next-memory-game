@@ -1,5 +1,6 @@
 import { OptGameStateType } from "@/features/OptGame/slices/optGameSlice";
 import { GridSizeType, ThemeType } from "@/features/OptGame/types";
+import { GameCellStatusType } from "../types";
 
 export const getFszBtns = (optGame: OptGameStateType) => {
   if (optGame.theme === ThemeType.NUMBERS) {
@@ -14,5 +15,18 @@ export const getFszBtns = (optGame: OptGameStateType) => {
         };
   } else {
     return {};
+  }
+};
+
+export const getBgBtn = (type: GameCellStatusType) => {
+  switch (type) {
+    case "currFlipped":
+      return "var(--green__app)";
+
+    case "matched":
+      return "var(--green__1)";
+
+    default:
+      return "var(--green__3)";
   }
 };

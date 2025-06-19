@@ -4,7 +4,7 @@ import type { FC } from "react";
 import { BtnGameStyled } from "./Styled";
 import { GameCellType } from "@/features/Game/types";
 import { ThemeType } from "@/features/OptGame/types";
-import { getFszBtns } from "../../../../lib/styles";
+import { getBgBtn, getFszBtns } from "../../../../lib/styles";
 import { OptGameStateType } from "@/features/OptGame/slices/optGameSlice";
 
 type PropsType = {
@@ -17,11 +17,11 @@ const BtnGame: FC<PropsType> = ({ c, handleClick, optGame }) => {
   return (
     <BtnGameStyled
       onClick={handleClick}
-      {...{ ...getFszBtns(optGame) }}
+      {...{ ...getFszBtns(optGame), $bg: getBgBtn(c.type) }}
       className="w-full h-full flex justify-center items-center"
     >
       {optGame.theme === ThemeType.NUMBERS ? (
-        <span className="label">{c.val as number}</span>
+        c.type !== "hidden" && <span className="label">{c.val as number}</span>
       ) : (
         <div className=""></div>
       )}

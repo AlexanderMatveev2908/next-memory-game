@@ -1,16 +1,16 @@
 "use client";
 
-import type { FC } from "react";
+import { type FC } from "react";
 import { GameContentStyled } from "./Styled";
 import { useDispatch, useSelector } from "react-redux";
 import { gameSlice, getGameState } from "../../slices/gameSlice";
 import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
-import { cpyObj, isArrOK, isObjOK } from "@/core/lib/dataStructure";
+import { isArrOK, isObjOK } from "@/core/lib/dataStructure";
 import WrapClient from "@/shared/components/wrappers/WrapClient/WrapClient";
 import BtnGame from "./fragments/BtnGame/BtnGame";
 import { GameCellType } from "../../types";
 import { handleStorageMove } from "../../lib/game";
-import { saveStorage } from "@/core/lib/storage";
+import { useFlipBack } from "../../hooks/useFlipBack";
 
 const GameContent: FC = () => {
   const gameState = useSelector(getGameState);
@@ -20,11 +20,10 @@ const GameContent: FC = () => {
 
   const handleClick = (c: GameCellType) => {
     dispatch(gameSlice.actions.makeMove(c));
-
-    const cpy = cpyObj(gameState);
-    const { updated } = handleStorageMove(cpy, c);
-    saveStorage("game", updated);
+    handleStorageMove(gameState, c);
   };
+
+  useFlipBack();
 
   return (
     <WrapClient>
