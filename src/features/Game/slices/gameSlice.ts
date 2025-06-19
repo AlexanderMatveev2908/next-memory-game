@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GameCellType } from "../types";
 import { getStorage } from "@/core/lib/storage";
+import { RootStateType } from "@/core/store";
 
 type StateGameType = {
   timer: {
@@ -52,3 +53,5 @@ export const gameSlice = createSlice({
   //     }
   //   ),
 });
+
+export const getGameState = (state: RootStateType) => state.game;
