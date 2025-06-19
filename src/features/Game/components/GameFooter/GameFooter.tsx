@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, type FC } from "react";
+import { useEffect, useMemo, type FC } from "react";
 import { GameFooterStyled } from "./Styled";
 import CounterBox from "@/shared/components/CounterBox/CounterBox";
 import { useGenIDs } from "@/core/hooks/useGenIDs";
@@ -17,7 +17,7 @@ const GameFooter: FC = () => {
     () => [
       {
         label: "Time",
-        val: gameState.timer.counter,
+        val: formatTime(gameState.timer.counter),
       },
       {
         label: "Moves",
@@ -27,7 +27,7 @@ const GameFooter: FC = () => {
     [gameState.moves, gameState.timer.counter]
   );
 
-  console.log(formatTime(5000));
+  useEffect(() => {}, []);
 
   return (
     <GameFooterStyled className="fixed">
