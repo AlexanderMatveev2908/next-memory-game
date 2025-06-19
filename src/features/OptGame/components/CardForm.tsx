@@ -15,7 +15,12 @@ import { optGameSlice } from "@/features/OptGame/slices/optGameSlice";
 import { saveStorage } from "@/core/lib/storage";
 import { CardFormStyled } from "./Styled";
 import { initGame } from "@/features/Game/lib";
-import { gameSlice } from "@/features/Game/slices/gameSlice";
+import {
+  defStateGame,
+  gameSlice,
+  StateGameType,
+} from "@/features/Game/slices/gameSlice";
+import { GameCellType } from "@/features/Game/types";
 
 const CardForm: FC = () => {
   const formCtx = useForm<OptGameFormType>({
@@ -43,13 +48,20 @@ const CardForm: FC = () => {
       dispatch(optGameSlice.actions.setOpt(data));
       saveStorage("optGame", data);
 
-      const gameBoard = initGame(data);
-      dispatch(gameSlice.actions.initGame({ gameBoard }));
-      saveStorage("game", {
-        gameBoard,
-        timer: { run: true, counter: 0 },
-        moves: 0,
-      });
+      const gameState: StateGameType = {
+        ...defStateGame,
+        gameBoard: initGame(data),
+        timer: {
+          ...defStateGame.timer,
+          run: true,
+        },
+      };
+      dispatch(
+        gameSlice.actions.initGame({
+          gameBoard: gameState.gameBoard as GameCellType[],
+        })
+      );
+      saveStorage("game", gameState);
     },
     (errs) => {
       console.log(errs);

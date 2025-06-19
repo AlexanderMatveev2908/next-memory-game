@@ -2,15 +2,29 @@
 
 import type { FC } from "react";
 import { GameContentStyled } from "./Styled";
-import { useSelector } from "react-redux";
-import { getGameState } from "../../slices/gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { gameSlice, getGameState } from "../../slices/gameSlice";
 import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
-import { isArrOK } from "@/core/lib/dataStructure";
+import { cpyObj, isArrOK, isObjOK } from "@/core/lib/dataStructure";
 import WrapClient from "@/shared/components/wrappers/WrapClient/WrapClient";
+import BtnGame from "./fragments/BtnGame/BtnGame";
+import { GameCellType } from "../../types";
+import { handleStorageMove } from "../../lib/game";
+import { saveStorage } from "@/core/lib/storage";
 
 const GameContent: FC = () => {
   const gameState = useSelector(getGameState);
   const optGame = useSelector(getOptGameState);
+
+  const dispatch = useDispatch();
+
+  const handleClick = (c: GameCellType) => {
+    dispatch(gameSlice.actions.makeMove(c));
+
+    const cpy = cpyObj(gameState);
+    const { updated } = handleStorageMove(cpy, c);
+    saveStorage("game", updated);
+  };
 
   return (
     <WrapClient>
@@ -19,8 +33,17 @@ const GameContent: FC = () => {
         {...{ $gridSize: optGame.gridSize?.split("x")?.[0] ?? "4" }}
       >
         {isArrOK(gameState.gameBoard) &&
+          isObjOK(optGame, (v) => !!v) &&
           gameState!.gameBoard!.map((cell) => (
-            <div key={cell.id} className="cell"></div>
+            <div key={cell.id} className="cell">
+              <BtnGame
+                {...{
+                  c: cell,
+                  optGame,
+                  handleClick: () => handleClick(cell),
+                }}
+              />
+            </div>
           ))}
       </GameContentStyled>
     </WrapClient>

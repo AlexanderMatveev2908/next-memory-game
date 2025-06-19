@@ -16,11 +16,15 @@ export const cpyObj = <T>(obj: T): T => {
   return res;
 };
 
-export const isObjOK = <T>(obj?: T): boolean =>
+export const isObjOK = <T>(obj?: T, cb?: (v: keyof T) => boolean): boolean =>
   typeof obj === "object" &&
   obj !== null &&
   !!Object.keys(obj).length &&
-  Object.values(obj).every((el) => el !== undefined && el !== "undefined");
+  Object.values(obj).every(
+    typeof cb === "function"
+      ? cb
+      : (el) => el !== undefined && el !== "undefined"
+  );
 
 export const isArrOK = <T>(arg?: T[] | null): boolean =>
   Array.isArray(arg) && !!arg.length && arg.every((el) => isObjOK(el));

@@ -5,9 +5,9 @@ import { MobilePopStyled } from "./Styled";
 import { useDispatch, useSelector } from "react-redux";
 import WrapPop from "@/shared/components/wrappers/WrapPop/WrapPop";
 import { getMobilePopState, mobilePopSlice } from "../../slices/mobilePopSlice";
-import { mobileBtns } from "./uiFactory/mobileBtns";
-import Btn from "@/shared/components/buttons/Btn/Btn";
 import { useNewGame } from "../../hooks/useNewGame";
+import { mobileBtns } from "../../uiFactory";
+import Btn from "@/shared/components/buttons/Btn/Btn";
 
 const MobilePop: FC = () => {
   const popState = useSelector(getMobilePopState);
