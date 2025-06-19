@@ -6,9 +6,10 @@ import WrapPop from "@/shared/components/wrappers/WrapPop/WrapPop";
 import { useSelector } from "react-redux";
 import { getGamePopState } from "../../slices/gamePopSlice";
 import Txt from "@/shared/components/Txt/Txt";
-import { rowsCountersPop } from "../../uiFactory";
+import { gamePopBtns, rowsCountersPop } from "./uiFactory";
 import RowCounter from "./fragments/RowCounter/RowCounter";
 import { getGameState } from "../../slices/gameSlice";
+import Btn from "@/shared/components/buttons/Btn/Btn";
 
 const GamePop: FC = ({}) => {
   const gamePopState = useSelector(getGamePopState);
@@ -45,6 +46,22 @@ const GamePop: FC = ({}) => {
         <div className="content w-full flex flex-col">
           {rowsData.map((el) => (
             <RowCounter key={el.id} {...{ el }} />
+          ))}
+        </div>
+
+        <div className="footer w-full">
+          {gamePopBtns.map((el) => (
+            <div key={el.id} className="wrap_btn w-full flex">
+              <Btn
+                {...{
+                  label: el.label,
+                  $bg: el.$bg,
+                  $clrTxt: el.$clrTxt,
+                  $fsz: "var(--h__sm)",
+                  $fsz_md: "var(--h__md)",
+                }}
+              />
+            </div>
           ))}
         </div>
       </GamePopStyled>

@@ -17,6 +17,16 @@ export const GamePopStyled = styled.div`
     gap: 8px;
   }
 
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    .wrap_btn {
+      height: 48px;
+    }
+  }
+
   ${resp("md")} {
     padding: 60px 55px;
     gap: 40px;
@@ -28,6 +38,15 @@ export const GamePopStyled = styled.div`
 
     .content {
       gap: 16px;
+    }
+
+    .footer {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+
+      .wrap_btn {
+        height: 52px;
+      }
     }
   }
 `;
