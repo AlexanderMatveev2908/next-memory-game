@@ -5,12 +5,13 @@ import { GameContentStyled } from "./Styled";
 import { useDispatch, useSelector } from "react-redux";
 import { gameSlice, getGameState } from "../../slices/gameSlice";
 import { getOptGameState } from "@/features/OptGame/slices/optGameSlice";
-import { isArrOK, isObjOK } from "@/core/lib/dataStructure";
+import { cpyObj, isArrOK, isObjOK } from "@/core/lib/dataStructure";
 import WrapClient from "@/shared/components/wrappers/WrapClient/WrapClient";
 import BtnGame from "./fragments/BtnGame/BtnGame";
 import { GameCellType } from "../../types";
-import { handleStorageMove } from "../../lib/game";
 import { useFlipBack } from "../../hooks/useFlipBack";
+import { handleMove } from "../../lib/game";
+import { saveStorage } from "@/core/lib/storage";
 
 const GameContent: FC = () => {
   const gameState = useSelector(getGameState);
@@ -20,10 +21,16 @@ const GameContent: FC = () => {
 
   const handleClick = (c: GameCellType) => {
     dispatch(gameSlice.actions.makeMove(c));
-    handleStorageMove(gameState, c);
+
+    const cpy = cpyObj(gameState);
+    const updated = handleMove(cpy, c, true);
+    saveStorage("game", updated);
   };
 
   useFlipBack();
+
+  const isDisabled =
+    (gameState.currFlipped?.length ?? 0) >= 2 || gameState.flipBack;
 
   return (
     <WrapClient>
@@ -40,6 +47,7 @@ const GameContent: FC = () => {
                   c: cell,
                   optGame,
                   handleClick: () => handleClick(cell),
+                  isDisabled,
                 }}
               />
             </div>
