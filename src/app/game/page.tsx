@@ -20,7 +20,7 @@ const Game: FC = () => {
   }, [optGame, nav]);
 
   return (
-    <GameStyled className="w-full grid grid-cols-1 justify-items-center items-center">
+    <GameStyled className="w-full grid grid-cols-1 place-content-center justify-items-center">
       <MobilePop />
 
       <GameHeader />

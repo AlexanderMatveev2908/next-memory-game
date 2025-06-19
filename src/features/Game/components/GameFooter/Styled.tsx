@@ -9,6 +9,8 @@ export const GameFooterStyled = styled.div`
 
   display: flex;
   justify-content: center;
+  max-width: fit-content;
+  margin: auto;
 
   .wrapper {
     display: grid;
@@ -16,7 +18,7 @@ export const GameFooterStyled = styled.div`
     gap: 24px;
 
     .wrapper__counter_box {
-      width: 150px;
+      width: 151px;
     }
 
     ${resp("md")} {
