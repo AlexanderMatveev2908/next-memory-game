@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GameCellType } from "../types";
 import { getStorage } from "@/core/lib/storage";
 import { RootStateType } from "@/core/store";
+import { mobilePopSlice } from "./mobilePopSlice";
 
 type StateGameType = {
   timer: {
@@ -12,7 +13,7 @@ type StateGameType = {
   gameBoard: GameCellType[] | null;
 };
 
-const defState = {
+export const defStateGame = {
   timer: {
     run: false,
     counter: 0,
@@ -21,7 +22,7 @@ const defState = {
   gameBoard: null,
 };
 
-const initState: StateGameType = getStorage("game") ?? defState;
+const initState: StateGameType = getStorage("game") ?? defStateGame;
 
 export const gameSlice = createSlice({
   name: "game",
@@ -35,8 +36,23 @@ export const gameSlice = createSlice({
       };
     },
 
-    resetGame: () => defState,
+    incTimer: (state) => {
+      state.timer.counter += 1;
+    },
+
+    setTimerMode: (state, action: PayloadAction<boolean>) => {
+      state.timer.run = action.payload;
+    },
+
+    resetGame: () => defStateGame,
   },
+  extraReducers: (builder) =>
+    builder.addCase(
+      mobilePopSlice.actions.setIsPop,
+      (state, action: PayloadAction<boolean>) => {
+        state.timer.run = !action.payload;
+      }
+    ),
   // extraReducers: (builder) =>
   //   builder.addCase(
   //     optGameSlice.actions.setOpt,

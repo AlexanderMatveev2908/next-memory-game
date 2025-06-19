@@ -1,14 +1,19 @@
 "use client";
 
-import { useEffect, useMemo, type FC } from "react";
+import { useEffect, useMemo, useRef, type FC } from "react";
 import { GameFooterStyled } from "./Styled";
 import CounterBox from "@/shared/components/CounterBox/CounterBox";
 import { useGenIDs } from "@/core/hooks/useGenIDs";
-import { useSelector } from "react-redux";
-import { getGameState } from "../../slices/gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { gameSlice, getGameState } from "../../slices/gameSlice";
 import { formatTime } from "@/core/lib/formatters";
+import { clearT } from "@/core/lib/etc";
+import { saveStorage } from "@/core/lib/storage";
+import { cpyObj } from "@/core/lib/dataStructure";
+import ClientWrap from "@/shared/components/wrappers/ClientWrap/Hydrated";
 
 const GameFooter: FC = () => {
+  const timerID = useRef<NodeJS.Timeout | null>(null);
   const gameState = useSelector(getGameState);
 
   const ids = useGenIDs({ lengths: [2] });
@@ -27,18 +32,36 @@ const GameFooter: FC = () => {
     [gameState.moves, gameState.timer.counter]
   );
 
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!gameState.timer.run) return;
+
+    timerID.current = setInterval(() => {
+      dispatch(gameSlice.actions.incTimer());
+
+      const cpy = cpyObj(gameState);
+      cpy.timer.counter += 1;
+      saveStorage("game", cpy);
+    }, 1000);
+
+    return () => {
+      clearT(timerID);
+    };
+  }, [gameState.timer.run, dispatch, gameState]);
 
   return (
-    <GameFooterStyled className="fixed">
-      <div className="wrapper">
-        {pairsVals.map((el, i) => (
-          <div key={ids.ids[0][i]} className="wrapper__counter_box">
-            <CounterBox {...{ ...el }} />
-          </div>
-        ))}
-      </div>
-    </GameFooterStyled>
+    <ClientWrap>
+      <GameFooterStyled className="fixed">
+        <div className="wrapper">
+          {pairsVals.map((el, i) => (
+            <div key={ids.ids[0][i]} className="wrapper__counter_box">
+              <CounterBox {...{ ...el }} />
+            </div>
+          ))}
+        </div>
+      </GameFooterStyled>
+    </ClientWrap>
   );
 };
 
