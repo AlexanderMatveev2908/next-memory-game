@@ -6,6 +6,7 @@ import { GameCellType, objSVGs } from "@/features/Game/types";
 import { ThemeType } from "@/features/OptGame/types";
 import { getBgBtn, getFszBtns } from "../../../../lib/styles";
 import { OptGameStateType } from "@/features/OptGame/slices/optGameSlice";
+import { motion } from "framer-motion";
 
 type PropsType = {
   c: GameCellType;
@@ -23,21 +24,31 @@ const BtnGame: FC<PropsType> = ({ c, handleClick, optGame, isDisabled }) => {
       onClick={handleClick}
       {...{
         ...getFszBtns(optGame),
-        $bg: getBgBtn(c.type),
         $iconSize: optGame.gridSize === "4x4" ? "34px" : "25px",
         $iconSIze_md: optGame.gridSize === "4x4" ? "56px" : "40px",
+        $bgServer: getBgBtn(c.type),
       }}
       className="w-full h-full flex justify-center items-center"
     >
-      {optGame.theme === ThemeType.NUMBERS
-        ? c.type !== "hidden" && (
+      <motion.div
+        className="relative w-full h-full"
+        animate={{ rotateY: c.type !== "hidden" ? 180 : 0 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          transformStyle: "preserve-3d",
+        }}
+      >
+        <div className="client"></div>
+        <div className="server absolute w-full h-full backface-hidden flex justify-center items-center rotate-y-180">
+          {optGame.theme === ThemeType.NUMBERS ? (
             <span className="label">{c.val as number}</span>
-          )
-        : c.type !== "hidden" && (
+          ) : (
             <div className="icon">
               <Icon className="w-full h-full text-[var(--white__1)]" />
             </div>
           )}
+        </div>
+      </motion.div>
     </BtnGameStyled>
   );
 };

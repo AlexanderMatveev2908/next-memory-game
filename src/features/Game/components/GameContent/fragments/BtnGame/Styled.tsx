@@ -4,13 +4,12 @@ import styled from "styled-components";
 type PropsType = {
   $fsz?: string;
   $fsz_md?: string;
-  $bg: string;
   $iconSize: string;
   $iconSIze_md: string;
+  $bgServer: string;
 };
 
 export const BtnGameStyled = styled.button<PropsType>`
-  background: ${({ $bg }) => $bg};
   border-radius: 60px;
 
   .label {
@@ -22,6 +21,25 @@ export const BtnGameStyled = styled.button<PropsType>`
   .icon {
     width: ${({ $iconSize }) => $iconSize};
     height: ${({ $iconSize }) => $iconSize};
+  }
+
+  .client,
+  .server {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+  }
+
+  .client {
+    background: var(--green__3);
+  }
+  .server {
+    background: ${({ $bgServer }) => $bgServer};
   }
 
   ${resp("md")} {

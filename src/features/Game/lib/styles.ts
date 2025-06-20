@@ -27,6 +27,6 @@ export const getBgBtn = (type: GameCellStatusType) => {
       return "var(--green__1)";
 
     default:
-      return "var(--green__3)";
+      return "";
   }
 };
