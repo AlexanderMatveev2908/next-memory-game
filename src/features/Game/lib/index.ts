@@ -1,3 +1,4 @@
+import { cpyObj } from "@/core/lib/dataStructure";
 import {
   CellGameValType,
   GameCellType,
@@ -10,7 +11,7 @@ import { GridSizeType, ThemeType } from "@/features/OptGame/types";
 import { v4 } from "uuid";
 
 export const shuffle = <T>(arg: T[]): T[] => {
-  const cpy = [...arg];
+  const cpy = cpyObj(arg);
 
   let i = cpy.length - 1;
   while (i > 0) {
@@ -48,7 +49,7 @@ export const initGame = ({
   }));
 };
 
-export const isPairGame = (gameBoard: GameCellType[]) => {
+export const isPairGame = (gameBoard: GameCellType[], theme: ThemeType) => {
   if (gameBoard?.length % 2 !== 0) return false;
 
   const counter = new Map<string, number>();
@@ -61,7 +62,11 @@ export const isPairGame = (gameBoard: GameCellType[]) => {
   }
 
   for (const count of counter.values()) {
-    if (count !== 2) return false;
+    if (gameBoard.length === 36 && theme === ThemeType.ICON) {
+      if (count % 2 !== 0) return false;
+    } else {
+      if (count !== 2) return false;
+    }
   }
 
   return true;

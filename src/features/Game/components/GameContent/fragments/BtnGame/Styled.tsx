@@ -5,6 +5,8 @@ type PropsType = {
   $fsz?: string;
   $fsz_md?: string;
   $bg: string;
+  $iconSize: string;
+  $iconSIze_md: string;
 };
 
 export const BtnGameStyled = styled.button<PropsType>`
@@ -17,7 +19,17 @@ export const BtnGameStyled = styled.button<PropsType>`
     color: var(--white__1);
   }
 
+  .icon {
+    width: ${({ $iconSize }) => $iconSize};
+    height: ${({ $iconSize }) => $iconSize};
+  }
+
   ${resp("md")} {
     font-size: ${({ $fsz_md }) => $fsz_md};
+
+    .icon {
+      width: ${({ $iconSIze_md }) => $iconSIze_md};
+      height: ${({ $iconSIze_md }) => $iconSIze_md};
+    }
   }
 `;
