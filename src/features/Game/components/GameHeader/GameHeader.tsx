@@ -9,6 +9,7 @@ import { mobilePopSlice } from "../../slices/mobilePopSlice";
 import WrapClient from "@/shared/components/wrappers/WrapClient/WrapClient";
 import { useNewGame } from "../../hooks/useNewGame";
 import { useMobile } from "@/core/hooks/useMobile";
+import { useRestart } from "../../hooks/useRestart";
 
 const GameHeader: FC = () => {
   const { isMobile } = useMobile();
@@ -19,6 +20,8 @@ const GameHeader: FC = () => {
   const handleClick = () => {
     dispatch(mobilePopSlice.actions.setIsPop(true));
   };
+
+  const { handleRestart } = useRestart();
 
   return (
     <WrapClient>
@@ -55,7 +58,7 @@ const GameHeader: FC = () => {
                   $clrTxt: "var(--white__1)",
                   $fsz: "var(--btn__md)",
                   $pad: "10px 40px",
-                  handleClick: () => console.log("TODO ☢️"),
+                  handleClick: handleRestart,
                 }}
               />
             </div>

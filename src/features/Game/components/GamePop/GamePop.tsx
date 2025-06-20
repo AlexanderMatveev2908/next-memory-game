@@ -11,6 +11,7 @@ import RowCounter from "./fragments/RowCounter/RowCounter";
 import { getGameState } from "../../slices/gameSlice";
 import Btn from "@/shared/components/buttons/Btn/Btn";
 import { useNewGame } from "../../hooks/useNewGame";
+import { useRestart } from "../../hooks/useRestart";
 
 const GamePop: FC = ({}) => {
   const gamePopState = useSelector(getGamePopState);
@@ -22,9 +23,10 @@ const GamePop: FC = ({}) => {
   );
 
   const { startNewGame } = useNewGame();
+  const { handleRestart } = useRestart();
 
   const handlers = new Map([
-    ["restart", () => console.log("TO DO ☢️")],
+    ["restart", handleRestart],
     ["setupNewGame", startNewGame],
   ]);
 

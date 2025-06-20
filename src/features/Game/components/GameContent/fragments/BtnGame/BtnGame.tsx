@@ -17,13 +17,13 @@ type PropsType = {
 const BtnGame: FC<PropsType> = ({ c, handleClick, optGame, isDisabled }) => {
   return (
     <BtnGameStyled
-      disabled={isDisabled}
+      disabled={isDisabled || c.type !== "hidden"}
       onClick={handleClick}
       {...{ ...getFszBtns(optGame), $bg: getBgBtn(c.type) }}
       className="w-full h-full flex justify-center items-center"
     >
       {optGame.theme === ThemeType.NUMBERS ? (
-        c.type !== "hidden" && <span className="label">{c.val as number}</span>
+        c.type !== "" && <span className="label">{c.val as number}</span>
       ) : (
         <div className=""></div>
       )}

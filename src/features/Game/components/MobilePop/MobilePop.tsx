@@ -8,6 +8,7 @@ import { getMobilePopState, mobilePopSlice } from "../../slices/mobilePopSlice";
 import { useNewGame } from "../../hooks/useNewGame";
 import { mobileBtns } from "../../uiFactory";
 import Btn from "@/shared/components/buttons/Btn/Btn";
+import { useRestart } from "../../hooks/useRestart";
 
 const MobilePop: FC = () => {
   const popState = useSelector(getMobilePopState);
@@ -15,20 +16,17 @@ const MobilePop: FC = () => {
   const dispatch = useDispatch();
 
   const { startNewGame } = useNewGame();
+  const { handleRestart } = useRestart();
 
   const handlers = useMemo(
     () => ({
-      restart: () => {
-        console.log("TODO ☢️");
-      },
-      newGame: () => {
-        startNewGame();
-      },
+      restart: handleRestart,
+      newGame: startNewGame,
       resumeGame: () => {
         dispatch(mobilePopSlice.actions.setIsPop(false));
       },
     }),
-    [dispatch, startNewGame]
+    [dispatch, startNewGame, handleRestart]
   );
 
   return (

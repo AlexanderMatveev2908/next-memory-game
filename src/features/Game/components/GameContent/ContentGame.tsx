@@ -13,6 +13,8 @@ import { useFlipBack } from "../../hooks/useFlipBack";
 import { handleMove } from "../../lib/game";
 import { saveStorage } from "@/core/lib/storage";
 import { useListenEnd } from "../../hooks/useListenEnd";
+import { __cg } from "@/core/lib/log";
+import { isPairGame } from "../../lib";
 
 const GameContent: FC = () => {
   const gameState = useSelector(getGameState);
@@ -33,6 +35,8 @@ const GameContent: FC = () => {
 
   const isDisabled =
     (gameState.currFlipped?.length ?? 0) >= 2 || gameState.flipBack;
+
+  __cg("is possible find pairs ⬇️", isPairGame(gameState.gameBoard!));
 
   return (
     <WrapClient>
