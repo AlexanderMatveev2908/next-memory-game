@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, type FC } from "react";
-import { WrapClientStyled } from "./Styled";
 
 type PropsType = {
   children: React.ReactNode;
@@ -14,11 +13,7 @@ const WrapClient: FC<PropsType> = ({ children }) => {
     setIsHydrated(true);
   }, []);
 
-  return (
-    <WrapClientStyled className="w-fit">
-      {isHydrated ? children : null}
-    </WrapClientStyled>
-  );
+  return <>{isHydrated ? children : null}</>;
 };
 
 export default WrapClient;
