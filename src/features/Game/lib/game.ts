@@ -45,3 +45,22 @@ export const handleFlipBack = (state: StateGameType, returnState?: boolean) => {
 
   return returnState ? state : null;
 };
+
+export const handleRestartGame = (
+  state: StateGameType,
+  returnState?: boolean
+) => {
+  state.currFlipped = null;
+  state.flipBack = false;
+  state.moves = 0;
+  state.timer = {
+    run: true,
+    counter: 0,
+  };
+  state.gameBoard = state.gameBoard!.map((cell) => ({
+    ...cell,
+    type: "hidden",
+  }));
+
+  return returnState ? state : null;
+};

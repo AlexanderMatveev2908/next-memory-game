@@ -36,21 +36,23 @@ export const objSVGs = {
   [GameIconsType.SUN]: Sun,
 };
 
-export const GameIconsType4x4 = Object.values(GameIconsType).slice(0, 8);
-
-const arrIcons6x6 = Object.values(GameIconsType);
-export const GameIconsType6x6 = arrIcons6x6
-  .slice(0)
-  .concat(Array.from({ length: 8 }, () => pickRandom(arrIcons6x6)));
-
-export const GameNumberType4x4 = Array.from(
-  { length: 8 },
-  (_, i) => i + 1 + ""
+export const GameIconsType4x4 = Object.freeze(
+  Object.values(GameIconsType).slice(0, 8)
 );
 
-export const GameNumberType6x6 = Array.from(
-  { length: 18 },
-  (_, i) => i + 1 + ""
+const arrIcons6x6 = Object.values(GameIconsType);
+export const GameIconsType6x6 = Object.freeze(
+  arrIcons6x6
+    .slice(0)
+    .concat(Array.from({ length: 8 }, () => pickRandom(arrIcons6x6)))
+);
+
+export const GameNumberType4x4 = Object.freeze(
+  Array.from({ length: 8 }, (_, i) => i + 1 + "")
+);
+
+export const GameNumberType6x6 = Object.freeze(
+  Array.from({ length: 18 }, (_, i) => i + 1 + "")
 );
 
 export type GameCellStatusType = "hidden" | "currFlipped" | "matched";

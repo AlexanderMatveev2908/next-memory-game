@@ -3,7 +3,7 @@ import { GameCellType } from "../types";
 import { getStorage } from "@/core/lib/storage";
 import { RootStateType } from "@/core/store";
 import { mobilePopSlice } from "./mobilePopSlice";
-import { handleFlipBack, handleMove } from "../lib/game";
+import { handleFlipBack, handleMove, handleRestartGame } from "../lib/game";
 import { gamePopSlice } from "./gamePopSlice";
 
 export type StateGameType = {
@@ -58,6 +58,10 @@ export const gameSlice = createSlice({
       handleFlipBack(state);
     },
 
+    restartGame: (state) => {
+      handleRestartGame(state);
+    },
+
     resetGame: () => defStateGame,
   },
   extraReducers: (builder) => {
@@ -68,9 +72,12 @@ export const gameSlice = createSlice({
           state.timer.run = !action.payload;
         }
       )
-      .addCase(gamePopSlice.actions.setPop, (state) => {
-        state.timer.run = false;
-      });
+      .addCase(
+        gamePopSlice.actions.setPop,
+        (state, action: PayloadAction<boolean>) => {
+          state.timer.run = !action.payload;
+        }
+      );
   },
   // extraReducers: (builder) =>
   //   builder.addCase(

@@ -47,3 +47,22 @@ export const initGame = ({
     id: v4(),
   }));
 };
+
+export const isPairGame = (gameBoard: GameCellType[]) => {
+  if (gameBoard?.length % 2 !== 0) return false;
+
+  const counter = new Map<string, number>();
+
+  for (const cell of gameBoard) {
+    counter.set(
+      cell!.val as string,
+      (counter.get(cell.val as string) ?? 0) + 1
+    );
+  }
+
+  for (const count of counter.values()) {
+    if (count !== 2) return false;
+  }
+
+  return true;
+};
