@@ -1,7 +1,8 @@
 import type { FC } from "react";
+import Spinner from "./components/Loading/Spinner";
 
 const Loading: FC = () => {
-  return <div></div>;
+  return <Spinner />;
 };
 
 export default Loading;

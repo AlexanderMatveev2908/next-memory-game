@@ -15,6 +15,7 @@ import { saveStorage } from "@/core/lib/storage";
 import { useListenEnd } from "../../hooks/useListenEnd";
 import { __cg } from "@/core/lib/log";
 import { isPairGame } from "../../lib";
+import { ThemeType } from "@/features/OptGame/types";
 
 const GameContent: FC = () => {
   const gameState = useSelector(getGameState);
@@ -38,7 +39,7 @@ const GameContent: FC = () => {
 
   __cg(
     "is possible find pairs ⬇️",
-    isPairGame(gameState.gameBoard!, optGame!.theme)
+    isPairGame(gameState.gameBoard!, optGame!.theme as ThemeType)
   );
 
   return (
