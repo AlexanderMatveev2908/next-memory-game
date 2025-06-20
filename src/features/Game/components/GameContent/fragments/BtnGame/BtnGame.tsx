@@ -23,7 +23,7 @@ const BtnGame: FC<PropsType> = ({ c, handleClick, optGame, isDisabled }) => {
       className="w-full h-full flex justify-center items-center"
     >
       {optGame.theme === ThemeType.NUMBERS ? (
-        c.type !== "" && <span className="label">{c.val as number}</span>
+        c.type !== "hidden" && <span className="label">{c.val as number}</span>
       ) : (
         <div className=""></div>
       )}
