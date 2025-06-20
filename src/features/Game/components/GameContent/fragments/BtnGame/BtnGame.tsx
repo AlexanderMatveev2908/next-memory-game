@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import { BtnGameStyled } from "./Styled";
 import { GameCellType, objSVGs } from "@/features/Game/types";
 import { ThemeType } from "@/features/OptGame/types";
@@ -16,7 +16,7 @@ type PropsType = {
 };
 
 const BtnGame: FC<PropsType> = ({ c, handleClick, optGame, isDisabled }) => {
-  const Icon = objSVGs[c.val as keyof typeof objSVGs];
+  const Icon = useMemo(() => objSVGs[c.val as keyof typeof objSVGs], [c.val]);
 
   return (
     <BtnGameStyled
@@ -28,7 +28,7 @@ const BtnGame: FC<PropsType> = ({ c, handleClick, optGame, isDisabled }) => {
         $iconSIze_md: optGame.gridSize === "4x4" ? "56px" : "40px",
         $bgServer: getBgBtn(c.type),
       }}
-      className="w-full h-full flex justify-center items-center"
+      className="deep_show w-full h-full flex justify-center items-center"
     >
       <motion.div
         className="relative w-full h-full"
@@ -36,10 +36,11 @@ const BtnGame: FC<PropsType> = ({ c, handleClick, optGame, isDisabled }) => {
         transition={{ duration: 0.5 }}
         style={{
           transformStyle: "preserve-3d",
+          willChange: "transform",
         }}
       >
         <div className="client"></div>
-        <div className="server absolute w-full h-full backface-hidden flex justify-center items-center rotate-y-180">
+        <div className="server">
           {optGame.theme === ThemeType.NUMBERS ? (
             <span className="label">{c.val as number}</span>
           ) : (

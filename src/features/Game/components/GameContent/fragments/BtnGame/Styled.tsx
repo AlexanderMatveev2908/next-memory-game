@@ -11,6 +11,7 @@ type PropsType = {
 
 export const BtnGameStyled = styled.button<PropsType>`
   border-radius: 60px;
+  background: transparent;
 
   .label {
     font-size: ${({ $fsz }) => $fsz};
@@ -23,9 +24,14 @@ export const BtnGameStyled = styled.button<PropsType>`
     height: ${({ $iconSize }) => $iconSize};
   }
 
+  .deep_show {
+    perspective: 9999px;
+  }
+
   .client,
   .server {
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -37,8 +43,11 @@ export const BtnGameStyled = styled.button<PropsType>`
 
   .client {
     background: var(--green__3);
+    min-width: 100%;
+    min-height: 100%;
   }
   .server {
+    transform: rotateY(180deg);
     background: ${({ $bgServer }) => $bgServer};
   }
 
