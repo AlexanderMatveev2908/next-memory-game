@@ -12,6 +12,8 @@ module.exports = {
     "#000": "currentColor",
     "#000000": "currentColor",
     black: "currentColor",
-    currentColor: "inherit",
+    inherit: "currentColor",
+    "#304859": "currentColor",
+    "#fff": "currentColor",
   },
 };

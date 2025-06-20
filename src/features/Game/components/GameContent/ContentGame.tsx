@@ -36,7 +36,10 @@ const GameContent: FC = () => {
   const isDisabled =
     (gameState.currFlipped?.length ?? 0) >= 2 || gameState.flipBack;
 
-  __cg("is possible find pairs ⬇️", isPairGame(gameState.gameBoard!));
+  __cg(
+    "is possible find pairs ⬇️",
+    isPairGame(gameState.gameBoard!, optGame!.theme)
+  );
 
   return (
     <WrapClient>
